@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExsalesMobileApp.pages.RegisrationPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image x:Name="logo_image" WidthRequest="200"/>
+            <Label x:Name="lb_reg_text"/>
+
+            <Picker x:Name="role_pc"/>
+            <Entry x:Name="en_email" Keyboard="Email"/>
+            <Button x:Name="bt_send"/>
+            <Button x:Name="bt_back"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

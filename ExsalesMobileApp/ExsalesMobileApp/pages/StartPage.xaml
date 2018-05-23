@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExsalesMobileApp.pages.StartPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image x:Name="logo_image" WidthRequest="200"/>
+            <Entry x:Name="en_login"/>
+            <Entry x:Name="en_password" IsPassword="True"/>
+            <Button x:Name="bt_sign_in"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="label_register"/>
+                <Button x:Name="bt_register"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
