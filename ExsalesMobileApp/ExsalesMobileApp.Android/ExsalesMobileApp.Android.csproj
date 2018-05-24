@@ -50,10 +50,14 @@
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="25.4.0.2" />
@@ -88,13 +92,13 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExsalesMobileApp\ExsalesMobileApp.csproj">
-      <Project>{EE3C7570-A792-4C34-82B7-3096E1A166D4}</Project>
-      <Name>ExsalesMobileApp</Name>
-    </ProjectReference>
+    <AndroidResource Include="Resources\drawable\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\logo.jpg" />
+    <ProjectReference Include="..\ExsalesMobileApp\ExsalesMobileApp.csproj">
+      <Project>{6fea51db-9470-4f01-8261-1f4d49fe802a}</Project>
+      <Name>ExsalesMobileApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

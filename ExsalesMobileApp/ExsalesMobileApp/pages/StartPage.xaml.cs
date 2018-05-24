@@ -26,6 +26,7 @@ namespace ExsalesMobileApp.pages
             bt_sign_in.Text = /*LangResources.StartPageBtSignIn;*/"Sign In";
             label_register.Text = /*LangResources.StartPageLabelRegister;*/"Create new account?";
             bt_register.Text = /*LangResources.StartPageBtRegister;*/"Register";
+       
 
             //приязка обработчиков событий
             bt_register.Clicked += Bt_register_Clicked;

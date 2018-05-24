@@ -133,6 +133,10 @@
     <value>Пароль будет вымлан вам на почту</value>
     <comment>Ознакомительный текст</comment>
   </data>
+  <data name="RegPagePickerTitle" xml:space="preserve">
+    <value>Роль</value>
+    <comment>заголовок выпадающего списка</comment>
+  </data>
   <data name="RegPageRoles" xml:space="preserve">
     <value>Менеджер:Продавец</value>
     <comment>Роли пользователя</comment>

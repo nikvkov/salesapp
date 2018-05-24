@@ -97,6 +97,15 @@ namespace ExsalesMobileApp.lang {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Role.
+        /// </summary>
+        public static string RegPagePickerTitle {
+            get {
+                return ResourceManager.GetString("RegPagePickerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Manager:Seller.
         /// </summary>
         public static string RegPageRoles {

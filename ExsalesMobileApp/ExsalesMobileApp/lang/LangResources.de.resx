@@ -133,6 +133,10 @@
     <value>The password will be sent to the specified email нем</value>
     <comment>Ознакомительный текст</comment>
   </data>
+  <data name="RegPagePickerTitle" xml:space="preserve">
+    <value>Role нем</value>
+    <comment>заголовок выпадающего списка</comment>
+  </data>
   <data name="RegPageRoles" xml:space="preserve">
     <value>Manager:Seller нем</value>
     <comment>Роли пользователя</comment>
