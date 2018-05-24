@@ -89,7 +89,6 @@ namespace ExsalesMobileApp.pages
                await DisplayAlert("Error", ex.Message, "OK");
             }
 
-
         }
 
         //обработка нажатия на кнопку назад

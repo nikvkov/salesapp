@@ -51,6 +51,17 @@ namespace ExsalesMobileApp.services
             return result.Data;
         }
 
+        //авторизация
+        public async Task<AuthData> Auth()
+        {
+             var result = JsonConvert.DeserializeObject<AuthData>(await Get());
+             return result;
+           // var detail = JsonConvert.DeserializeObject<AuthDetail>(result.Data);
+
+           //  return detail;
+            //return await Get();
+        }
+
         //добавляем параметры к запросу
         public void AddParams(Dictionary<string,string> data)
         {
@@ -84,5 +95,30 @@ namespace ExsalesMobileApp.services
             public string Data { get; set; }
 
         }
+        public class AuthData
+        {
+
+            [JsonProperty("status")]
+            public bool Status { get; set; }
+
+            [JsonProperty("role")]
+            public string Role { get; set; }
+
+
+            [JsonProperty("auth_key")]
+            public string AuthKey { get; set; }
+
+            //public class AuthDetail
+            //{
+            //    [JsonProperty("role")]
+            //    public string Role { get; set; }
+
+            //    [JsonProperty("auth_key")]
+            //    public string AuthKey { get; set; }
+            //}
+
+        }
+
+
     }
 }
