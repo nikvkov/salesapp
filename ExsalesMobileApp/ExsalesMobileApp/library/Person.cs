@@ -80,11 +80,11 @@ namespace ExsalesMobileApp.library
             jsonObj = data;
 
             this.role = (int)data["role"];
-            firstName =String.IsNullOrEmpty(data["firstName"].ToString())&& data["firstName"].ToString().Length>0? data["firstName"].ToString():"User";
-            lastName = String.IsNullOrEmpty(data["lastName"].ToString()) && data["lastName"].ToString().Length > 0 ? data["lastName"].ToString() : "Surname";
+            firstName =String.IsNullOrEmpty(data["firstName"].ToString())&& data["firstName"].ToString().Length==0? "User":data["firstName"].ToString();
+            lastName = String.IsNullOrEmpty(data["lastName"].ToString()) && data["lastName"].ToString().Length ==0 ? "Surname": data["lastName"].ToString() ;
             authKey = data["auth_key"].ToString();
             email = data["email"].ToString();
-            phone = String.IsNullOrEmpty(data["phone"].ToString()) && data["phone"].ToString().Length > 0 ? data["phone"].ToString() : "Phone";
+            phone = String.IsNullOrEmpty(data["phone"].ToString()) || data["phone"].ToString().Length == 0 ? "+1 111 111 11 11": data["phone"].ToString();
             company = data["company"].ToString();
             referal = (int)data["referal"];
 

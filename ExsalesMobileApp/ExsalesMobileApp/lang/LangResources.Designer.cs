@@ -115,6 +115,15 @@ namespace ExsalesMobileApp.lang {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Back.
         /// </summary>
         public static string PageBack {
@@ -192,6 +201,96 @@ namespace ExsalesMobileApp.lang {
         public static string PersonPageLastNamePlaceholder {
             get {
                 return ResourceManager.GetString("PersonPageLastNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Check your email!.
+        /// </summary>
+        public static string PersonPageMessageBadEmail {
+            get {
+                return ResourceManager.GetString("PersonPageMessageBadEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Check the specified name!.
+        /// </summary>
+        public static string PersonPageMessageBadFirstName {
+            get {
+                return ResourceManager.GetString("PersonPageMessageBadFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Check the surname!.
+        /// </summary>
+        public static string PersonPageMessageBadLastName {
+            get {
+                return ResourceManager.GetString("PersonPageMessageBadLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The password must contain at least 8 characters!.
+        /// </summary>
+        public static string PersonPageMessageBadPassword {
+            get {
+                return ResourceManager.GetString("PersonPageMessageBadPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Check your phone!.
+        /// </summary>
+        public static string PersonPageMessageBadPhone {
+            get {
+                return ResourceManager.GetString("PersonPageMessageBadPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на You changed your email address. Check that the email is correct to avoid authorization problems.
+        /// </summary>
+        public static string PersonPageMessageChangeEmail {
+            get {
+                return ResourceManager.GetString("PersonPageMessageChangeEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Error updating data! Check that the data is correct and try again.
+        /// </summary>
+        public static string PersonPageMessageNotUpdateData {
+            get {
+                return ResourceManager.GetString("PersonPageMessageNotUpdateData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на User data updated!.
+        /// </summary>
+        public static string PersonPageMessageUpdateData {
+            get {
+                return ResourceManager.GetString("PersonPageMessageUpdateData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Need new password?.
+        /// </summary>
+        public static string PersonPagePasswordLabelText {
+            get {
+                return ResourceManager.GetString("PersonPagePasswordLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Put new password.
+        /// </summary>
+        public static string PersonPagePasswordPlaceholder {
+            get {
+                return ResourceManager.GetString("PersonPagePasswordPlaceholder", resourceCulture);
             }
         }
         
@@ -327,6 +426,24 @@ namespace ExsalesMobileApp.lang {
         public static string StartPageLoginPlaceholder {
             get {
                 return ResourceManager.GetString("StartPageLoginPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Success.
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Warning.
+        /// </summary>
+        public static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
     }

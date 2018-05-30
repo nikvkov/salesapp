@@ -13,6 +13,14 @@
             <Entry x:Name="en_email"/>
             <Label x:Name="phoneLabelText"/>
             <Entry x:Name="en_phone"/>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="passwordLabelText"/>
+                <Switch x:Name="sw_needPassword" IsToggled="False"/>
+            </StackLayout>
+            <Entry x:Name="en_password"
+                       BindingContext="{x:Reference Name=sw_needPassword}"
+                       IsVisible="{Binding Path=IsToggled}"/>
             <StackLayout Orientation="Horizontal">
                 <Button x:Name="bt_edit"/>
                 <Button x:Name="bt_save" IsEnabled="False"/>

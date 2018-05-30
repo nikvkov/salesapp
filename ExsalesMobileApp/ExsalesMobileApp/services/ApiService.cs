@@ -45,7 +45,7 @@ namespace ExsalesMobileApp.services
         }
 
         //отправка POST запроса
-        async Task<HttpStatusCode> Post(Dictionary<string,string> data)
+        public async Task<HttpStatusCode> Post(Dictionary<string,string> data)
         {
             HttpClient client = GetClientJson();
             HttpContent content = new FormUrlEncodedContent(data);

@@ -141,6 +141,10 @@
     <value>Здравствуйте,</value>
     <comment>текст поля приветствия</comment>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+    <comment>Ошибка</comment>
+  </data>
   <data name="PageBack" xml:space="preserve">
     <value>Назад</value>
     <comment>текст кнопки назад</comment>
@@ -176,6 +180,46 @@
   <data name="PersonPageLastNamePlaceholder" xml:space="preserve">
     <value>Укажите фамилию</value>
     <comment>placeholder поля ввода last name</comment>
+  </data>
+  <data name="PersonPageMessageBadEmail" xml:space="preserve">
+    <value>Проверьте Email!</value>
+    <comment>Ошибка при указании email</comment>
+  </data>
+  <data name="PersonPageMessageBadFirstName" xml:space="preserve">
+    <value>Проверьте указанное имя!</value>
+    <comment>Ошибка при указании имени</comment>
+  </data>
+  <data name="PersonPageMessageBadLastName" xml:space="preserve">
+    <value>Проверьте указанную фамилию!</value>
+    <comment>Ошибка при указании фамилии</comment>
+  </data>
+  <data name="PersonPageMessageBadPassword" xml:space="preserve">
+    <value>Пароль должен содержать не немее 8 символов!</value>
+    <comment>Ошибка при указании password</comment>
+  </data>
+  <data name="PersonPageMessageBadPhone" xml:space="preserve">
+    <value>Проверьте указанный телефон!</value>
+    <comment>Ошибка при указании phone</comment>
+  </data>
+  <data name="PersonPageMessageChangeEmail" xml:space="preserve">
+    <value>Ваш email был изменен! Проверьте правильность нового email для избежания проблем с авторизацией</value>
+    <comment>сообщение при смене пароля</comment>
+  </data>
+  <data name="PersonPageMessageNotUpdateData" xml:space="preserve">
+    <value>Ошибка обновления! Проверьте правильность указанных данных и попробуйте еще раз</value>
+    <comment>Текст окна при ошибке обновления данных</comment>
+  </data>
+  <data name="PersonPageMessageUpdateData" xml:space="preserve">
+    <value>Данные пользователя обновлены!</value>
+    <comment>Текст окна при обновлении данных</comment>
+  </data>
+  <data name="PersonPagePasswordLabelText" xml:space="preserve">
+    <value>Хотите сменить пароль?</value>
+    <comment>текст метки поля password</comment>
+  </data>
+  <data name="PersonPagePasswordPlaceholder" xml:space="preserve">
+    <value>Укажите новый пароль</value>
+    <comment>placeholder поля ввода password</comment>
   </data>
   <data name="PersonPagePhoneLabelText" xml:space="preserve">
     <value>Ваш телефон</value>
@@ -236,5 +280,13 @@
   <data name="StartPageLoginPlaceholder" xml:space="preserve">
     <value>Логин</value>
     <comment>placeholder для поля ввода login</comment>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Успех</value>
+    <comment>Успех</comment>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Предупреждение</value>
+    <comment>Предупреждение</comment>
   </data>
 </root>
