@@ -117,13 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountPageButtonFunction" xml:space="preserve">
+    <value>Функции</value>
+    <comment>текст кнопки Функции</comment>
+  </data>
+  <data name="AccountPageButtonPersonalData" xml:space="preserve">
+    <value>Личные данные</value>
+    <comment>текст кнопки Профиль</comment>
+  </data>
+  <data name="AccountPageFunctionLabelText" xml:space="preserve">
+    <value>Начните работу</value>
+    <comment>текст метки перед кнопкой Функции</comment>
+  </data>
+  <data name="AccountPagePersonalDataLabelText" xml:space="preserve">
+    <value>Укажите личную информацию</value>
+    <comment>текст метки перед кнопкой Профиль</comment>
+  </data>
+  <data name="AccountPageRoleTextLabel" xml:space="preserve">
+    <value>Ваша текушая роль - </value>
+    <comment>текст метки текущего поля</comment>
+  </data>
+  <data name="AccountPageWelcomeText" xml:space="preserve">
+    <value>Здравствуйте,</value>
+    <comment>текст поля приветствия</comment>
+  </data>
   <data name="PageBack" xml:space="preserve">
     <value>Назад</value>
     <comment>текст кнопки назад</comment>
   </data>
+  <data name="PersonPageButtonEditText" xml:space="preserve">
+    <value>Редактировать</value>
+    <comment>текст кнопки Редактировать</comment>
+  </data>
+  <data name="PersonPageButtonSaveText" xml:space="preserve">
+    <value>Сохранить</value>
+    <comment>текст кнопки Сохранить</comment>
+  </data>
+  <data name="PersonPageEmailLabelText" xml:space="preserve">
+    <value>Ваш email</value>
+    <comment>текст метки поля email</comment>
+  </data>
+  <data name="PersonPageEmailPlaceholder" xml:space="preserve">
+    <value>Укажите email</value>
+    <comment>placeholder поля ввода email</comment>
+  </data>
+  <data name="PersonPageFirstNameLabelText" xml:space="preserve">
+    <value>Имя</value>
+    <comment>текст метки поля first name</comment>
+  </data>
+  <data name="PersonPageFirstNamePlaceholder" xml:space="preserve">
+    <value>Укажите имя</value>
+    <comment>placeholder поля ввода first name</comment>
+  </data>
+  <data name="PersonPageLastNameLabelText" xml:space="preserve">
+    <value>Фамилия</value>
+    <comment>текст метки поля last name</comment>
+  </data>
+  <data name="PersonPageLastNamePlaceholder" xml:space="preserve">
+    <value>Укажите фамилию</value>
+    <comment>placeholder поля ввода last name</comment>
+  </data>
+  <data name="PersonPagePhoneLabelText" xml:space="preserve">
+    <value>Ваш телефон</value>
+    <comment>текст метки поля phone</comment>
+  </data>
+  <data name="PersonPagePhonePlaceholder" xml:space="preserve">
+    <value>Укажите телефон</value>
+    <comment>placeholder поля ввода phone</comment>
+  </data>
+  <data name="PersonPageTitleLabelText" xml:space="preserve">
+    <value>Ваши личные данные</value>
+    <comment>заголовок страницы</comment>
+  </data>
   <data name="RegPageBtSend" xml:space="preserve">
     <value>Отправить</value>
     <comment>текст кнопки Отправить</comment>
+  </data>
+  <data name="RegPageDataError" xml:space="preserve">
+    <value>Проверьте указанные данные и выберите роль!</value>
+    <comment>ошибка при неправильном вводе данных</comment>
   </data>
   <data name="RegPageEmailPlaceholder" xml:space="preserve">
     <value>Укажите email</value>
@@ -148,6 +220,10 @@
   <data name="StartPageBtSignIn" xml:space="preserve">
     <value>Войти</value>
     <comment>текст кнопки Войти</comment>
+  </data>
+  <data name="StartPageEnterMessageWarning" xml:space="preserve">
+    <value>Ошибка авторизации. Проверьте указанные данные!</value>
+    <comment>Ошибка авторизации</comment>
   </data>
   <data name="StartPageLabelRegister" xml:space="preserve">
     <value>Создать новый аккаунт?</value>

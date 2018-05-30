@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,13 +35,24 @@ namespace ExsalesMobileApp.services
             return client;
         }
 
-        // получаем всех друзей
+        // получаем результат запроса
         async Task<string> Get()
         {
             HttpClient client = GetClientJson();
             string result = await client.GetStringAsync(Url);
             //return JsonConvert.DeserializeObject<IEnumerable<Friend>>(result);
             return result;
+        }
+
+        //отправка POST запроса
+        async Task<HttpStatusCode> Post(Dictionary<string,string> data)
+        {
+            HttpClient client = GetClientJson();
+            HttpContent content = new FormUrlEncodedContent(data);
+           
+            var response = await client.PostAsync(Url, content);
+            return response.StatusCode;
+        
         }
 
         //регистрация пользователя 
@@ -52,15 +65,15 @@ namespace ExsalesMobileApp.services
         }
 
         //авторизация
-        public async Task<AuthData> Auth()
+        public async Task<JObject> Auth()
         {
-             var result = JsonConvert.DeserializeObject<AuthData>(await Get());
-             return result;
-           // var detail = JsonConvert.DeserializeObject<AuthDetail>(result.Data);
+            // var result = JsonConvert.DeserializeObject<AuthData>(await Get());
+            // return result;
+            JObject o = JObject.Parse(await Get());
+            return o;
 
-           //  return detail;
-            //return await Get();
         }
+
 
         //добавляем параметры к запросу
         public void AddParams(Dictionary<string,string> data)
@@ -95,29 +108,52 @@ namespace ExsalesMobileApp.services
             public string Data { get; set; }
 
         }
-        public class AuthData
-        {
 
-            [JsonProperty("status")]
-            public bool Status { get; set; }
+        //public class AuthData
+        //{
 
-            [JsonProperty("role")]
-            public string Role { get; set; }
+        //    [JsonProperty("status")]
+        //    public bool Status { get; set; }
+
+        //    [JsonProperty("role")]
+        //    public string Role { get; set; }
 
 
-            [JsonProperty("auth_key")]
-            public string AuthKey { get; set; }
+        //    [JsonProperty("auth_key")]
+        //    public string AuthKey { get; set; }
 
-            //public class AuthDetail
-            //{
-            //    [JsonProperty("role")]
-            //    public string Role { get; set; }
+        //    [JsonProperty("firstName")]
+        //    public string FirstName { get; set; }
 
-            //    [JsonProperty("auth_key")]
-            //    public string AuthKey { get; set; }
-            //}
+        //    [JsonProperty("lastName")]
+        //    public string LastName { get; set; }
 
-        }
+        //    [JsonProperty("email")]
+        //    public string Email { get; set; }
+
+        //    [JsonProperty("phone")]
+        //    public string Phone { get; set; }
+
+        //    [JsonProperty("company")]
+        //    public string Company { get; set; }
+
+        //    [JsonProperty("referal")]
+        //    public string Referal { get; set; }
+
+        //    [JsonProperty("functions")]
+        //    public string Functions { get; set; }
+
+
+        //    //public class AuthDetail
+        //    //{
+        //    //    [JsonProperty("role")]
+        //    //    public string Role { get; set; }
+
+        //    //    [JsonProperty("auth_key")]
+        //    //    public string AuthKey { get; set; }
+        //    //}
+
+        //}
 
 
     }

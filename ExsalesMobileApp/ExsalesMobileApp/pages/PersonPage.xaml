@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExsalesMobileApp.pages.PersonPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="titleLabel"/>
+            <Label x:Name="firstNameLabelText"/>
+            <Entry x:Name="en_firstName" />
+            <Label x:Name="lastNameLabelText"/>
+            <Entry x:Name="en_lastName"/>
+            <Label x:Name="emailLabelText"/>
+            <Entry x:Name="en_email"/>
+            <Label x:Name="phoneLabelText"/>
+            <Entry x:Name="en_phone"/>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="bt_edit"/>
+                <Button x:Name="bt_save" IsEnabled="False"/>
+            </StackLayout>
+            <Button x:Name="bt_back"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -58,7 +58,7 @@ namespace ExsalesMobileApp.pages
                 //задаем url отправки
                 ApiService api = new ApiService
                 {
-                    Url = "https://www.exsales.net/api/user/registration"
+                    Url = "https://www.exsales.net/api/v1/user/registration"
                 };
 
                 //добавляем параметы к запросу
@@ -78,6 +78,7 @@ namespace ExsalesMobileApp.pages
                 }
                 else
                 {
+                    //await DisplayAlert("Warning", LangResources.RegPageDataError, "OK");
                     await DisplayAlert("Warning", "Проверьте указанные данные и выберите роль!", "OK");
                 }
               

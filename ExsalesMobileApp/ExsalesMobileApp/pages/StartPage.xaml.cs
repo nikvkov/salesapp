@@ -1,5 +1,6 @@
 ﻿using ExsalesMobileApp.lang;
 using ExsalesMobileApp.services;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,25 +20,31 @@ namespace ExsalesMobileApp.pages
         string auth_key;
 		public StartPage ()
 		{
-			InitializeComponent ();
+            try
+            {
+                InitializeComponent();
 
-            //инициализация элементов формы
-            logo_image.Source = @"logo.jpg";
+                //инициализация элементов формы
+                logo_image.Source = @"logo.jpg";
 
-            //блок локализации
-            en_login.Placeholder = /*LangResources.StartPageLoginPlaceholder;*/"Login";
-            en_password.Placeholder = /*LangResources.StartPageLoginPassword;*/"Password";
-            bt_sign_in.Text = /*LangResources.StartPageBtSignIn;*/"Sign In";
-            label_register.Text = /*LangResources.StartPageLabelRegister;*/"Create new account?";
-            bt_register.Text = /*LangResources.StartPageBtRegister;*/"Register";
+                //блок локализации
+                en_login.Placeholder = /*LangResources.StartPageLoginPlaceholder;*/"Login";
+                en_password.Placeholder = /*LangResources.StartPageLoginPassword;*/"Password";
+                bt_sign_in.Text = /*LangResources.StartPageBtSignIn;*/"Sign In";
+                label_register.Text = /*LangResources.StartPageLabelRegister;*/"Create new account?";
+                bt_register.Text = /*LangResources.StartPageBtRegister;*/"Register";
 
-            //тестирование
-            en_login.Text = "seller@test.com";
-            en_password.Text = "NYACRgFgNx";
+                //тестирование
+                en_login.Text = "manager@test.com";
+                en_password.Text = "gIcDqiwYCq";
 
-            //приязка обработчиков событий
-            bt_register.Clicked += Bt_register_Clicked;
-            bt_sign_in.Clicked += Bt_sign_in_Clicked;
+                //приязка обработчиков событий
+                bt_register.Clicked += Bt_register_Clicked;
+                bt_sign_in.Clicked += Bt_sign_in_Clicked;
+            }catch(Exception ex)
+            {
+                DisplayAlert("Error", ex.Message, "OK");
+            }
 
         }//c_tor
 
@@ -49,7 +56,7 @@ namespace ExsalesMobileApp.pages
                 //задаем url отправки
                 ApiService api = new ApiService
                 {
-                    Url = "https://www.exsales.net/api/user/auth"
+                    Url = "https://www.exsales.net/api/v1/user/auth"
                 };
 
                 //добавляем параметы к запросу
@@ -64,17 +71,18 @@ namespace ExsalesMobileApp.pages
                 if (!String.IsNullOrEmpty(en_login.Text) && !String.IsNullOrEmpty(en_password.Text))
                 {
                     //отправляем запрос и ждем результат
-                    AuthData res = await api.Auth();
-                    //await DisplayAlert("Message", res.AuthKey, "OK");
-                    //получаем ключ авторизации пользователя
-                    if (res.Status)
+                    JObject res = await api.Auth();
+              //      await DisplayAlert("Message", res/*bool.Parse(res["status"].ToString()).ToString()*/, "OK");
+               //     получаем ключ авторизации пользователя
+                    if (bool.Parse(res["status"].ToString()))
                     {
-                        auth_key = res.AuthKey;
-
-                        await Navigation.PushModalAsync(new AccountPage(auth_key), true);
+                        auth_key = res["auth_key"].ToString();
+                        //await DisplayAlert("Message", auth_key, "OK");
+                        await Navigation.PushModalAsync(new AccountPage(res), true);
                     }
                     else
                     {
+                        // await DisplayAlert("Warning", LangResources.StartPageEnterMessageWarning, "OK");
                         await DisplayAlert("Warning", "Ошибка авторизации. Проверьте указанные данные!", "OK");
                     }
                 }

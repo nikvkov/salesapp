@@ -61,6 +61,60 @@ namespace ExsalesMobileApp.lang {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Function.
+        /// </summary>
+        public static string AccountPageButtonFunction {
+            get {
+                return ResourceManager.GetString("AccountPageButtonFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Personal data.
+        /// </summary>
+        public static string AccountPageButtonPersonalData {
+            get {
+                return ResourceManager.GetString("AccountPageButtonPersonalData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Get Started.
+        /// </summary>
+        public static string AccountPageFunctionLabelText {
+            get {
+                return ResourceManager.GetString("AccountPageFunctionLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter your personal information.
+        /// </summary>
+        public static string AccountPagePersonalDataLabelText {
+            get {
+                return ResourceManager.GetString("AccountPagePersonalDataLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Your current role is.
+        /// </summary>
+        public static string AccountPageRoleTextLabel {
+            get {
+                return ResourceManager.GetString("AccountPageRoleTextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Welcome, .
+        /// </summary>
+        public static string AccountPageWelcomeText {
+            get {
+                return ResourceManager.GetString("AccountPageWelcomeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Back.
         /// </summary>
         public static string PageBack {
@@ -70,11 +124,119 @@ namespace ExsalesMobileApp.lang {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Edit.
+        /// </summary>
+        public static string PersonPageButtonEditText {
+            get {
+                return ResourceManager.GetString("PersonPageButtonEditText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Save.
+        /// </summary>
+        public static string PersonPageButtonSaveText {
+            get {
+                return ResourceManager.GetString("PersonPageButtonSaveText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Your email.
+        /// </summary>
+        public static string PersonPageEmailLabelText {
+            get {
+                return ResourceManager.GetString("PersonPageEmailLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Put your email.
+        /// </summary>
+        public static string PersonPageEmailPlaceholder {
+            get {
+                return ResourceManager.GetString("PersonPageEmailPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на First name.
+        /// </summary>
+        public static string PersonPageFirstNameLabelText {
+            get {
+                return ResourceManager.GetString("PersonPageFirstNameLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Put your first name.
+        /// </summary>
+        public static string PersonPageFirstNamePlaceholder {
+            get {
+                return ResourceManager.GetString("PersonPageFirstNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Last name.
+        /// </summary>
+        public static string PersonPageLastNameLabelText {
+            get {
+                return ResourceManager.GetString("PersonPageLastNameLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Put your last name.
+        /// </summary>
+        public static string PersonPageLastNamePlaceholder {
+            get {
+                return ResourceManager.GetString("PersonPageLastNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Your phone.
+        /// </summary>
+        public static string PersonPagePhoneLabelText {
+            get {
+                return ResourceManager.GetString("PersonPagePhoneLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Put your phone.
+        /// </summary>
+        public static string PersonPagePhonePlaceholder {
+            get {
+                return ResourceManager.GetString("PersonPagePhonePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Your personal information.
+        /// </summary>
+        public static string PersonPageTitleLabelText {
+            get {
+                return ResourceManager.GetString("PersonPageTitleLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Send.
         /// </summary>
         public static string RegPageBtSend {
             get {
                 return ResourceManager.GetString("RegPageBtSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Check the specified data and select a role!.
+        /// </summary>
+        public static string RegPageDataError {
+            get {
+                return ResourceManager.GetString("RegPageDataError", resourceCulture);
             }
         }
         
@@ -129,6 +291,15 @@ namespace ExsalesMobileApp.lang {
         public static string StartPageBtSignIn {
             get {
                 return ResourceManager.GetString("StartPageBtSignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Authorisation Error. Check the information provided!.
+        /// </summary>
+        public static string StartPageEnterMessageWarning {
+            get {
+                return ResourceManager.GetString("StartPageEnterMessageWarning", resourceCulture);
             }
         }
         
