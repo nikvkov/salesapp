@@ -145,6 +145,14 @@
     <value>Ошибка</value>
     <comment>Ошибка</comment>
   </data>
+  <data name="FunctionsPageFunctionsNames" xml:space="preserve">
+    <value>Управление компанией: Управление дистрибьюторской сетью: Управление розничным местоположением: Управление персоналом: Управление продуктами / услугами: Управление бонусами: Продажи: Мониторинг продаж: Организация розничного размещения (regjobber)</value>
+    <comment>название функций</comment>
+  </data>
+  <data name="FunctionsPageTitleLabelText" xml:space="preserve">
+    <value>Функции доступные вам,</value>
+    <comment>Текст метки приветствия</comment>
+  </data>
   <data name="PageBack" xml:space="preserve">
     <value>Назад</value>
     <comment>текст кнопки назад</comment>

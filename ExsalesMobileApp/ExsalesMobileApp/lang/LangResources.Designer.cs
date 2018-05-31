@@ -124,6 +124,24 @@ namespace ExsalesMobileApp.lang {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Company management:Management of a distribution network:Management of a retail location:Personnel management:Product/service management:Bonus point management:Sales:Sales monitoring:Retail location organization (regjobber).
+        /// </summary>
+        public static string FunctionsPageFunctionsNames {
+            get {
+                return ResourceManager.GetString("FunctionsPageFunctionsNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The functions available to you,.
+        /// </summary>
+        public static string FunctionsPageTitleLabelText {
+            get {
+                return ResourceManager.GetString("FunctionsPageTitleLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Back.
         /// </summary>
         public static string PageBack {

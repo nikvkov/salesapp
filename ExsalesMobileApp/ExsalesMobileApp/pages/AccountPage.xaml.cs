@@ -1,4 +1,7 @@
-﻿using ExsalesMobileApp.lang;
+﻿#define DEBUG
+#undef RELEASE
+
+using ExsalesMobileApp.lang;
 using ExsalesMobileApp.library;
 using ExsalesMobileApp.services;
 using Newtonsoft.Json.Linq;
@@ -31,7 +34,8 @@ namespace ExsalesMobileApp.pages
 
 
             //блок локализации
-            string text = "Manager:Seller";        /*LangResources.RegPageRoles;*/
+#if (DEBUG)
+            string text = "Manager:Seller";       
             string[] roles = text.Split(new char[] { ':' });
 
             WelcomeLabel.Text = "Welcome, "+user.FirstName;
@@ -41,10 +45,10 @@ namespace ExsalesMobileApp.pages
             bt_PersonalData.Text = "Personal data";
             lb_functionsText.Text = "Get Started";
             bt_Functions.Text = "Functions";
-            bt_back.Text = "Back";           /*LangResources.PageBack;*/
-
+            bt_back.Text = "Back";
+#else
             //раскоментировать при переводе
-            /*    string text = LangResources.RegPageRoles;
+            string text = LangResources.RegPageRoles;
                 string[] roles = text.Split(new char[] { ':' });
 
                 WelcomeLabel.Text = LangResources.AccountPageWelcomeText + user.FirstName;
@@ -55,14 +59,20 @@ namespace ExsalesMobileApp.pages
                 lb_functionsText.Text = LangResources.AccountPageFunctionLabelText;
                 bt_Functions.Text = LangResources.AccountPageButtonFunction;
                 bt_back.Text = LangResources.PageBack;
-            */
+#endif            
 
             //добавляем обработку событий
             bt_back.Clicked += Bt_Back_Clicked;
             bt_PersonalData.Clicked += Bt_PersonalData_Clicked;
+            bt_Functions.Clicked += Bt_Functions_Clicked;
 
 
         }//c_tor
+
+        private async void Bt_Functions_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new FunctionsPage(user), true);
+        }
 
         //Нажатие на кнопку назад
         private async void Bt_Back_Clicked(object sender, EventArgs e)

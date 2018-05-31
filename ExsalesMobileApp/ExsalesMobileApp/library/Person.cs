@@ -88,7 +88,7 @@ namespace ExsalesMobileApp.library
             company = data["company"].ToString();
             referal = (int)data["referal"];
 
-         //   functions =  JsonConvert.DeserializeObject<List<FunctionData>>(data["functions"].ToString());
+            functions =  JsonConvert.DeserializeObject<List<FunctionData>>(data["functions"].ToString());
             //foreach (JToken tkn in data["functions"])
             //{
             //    foreach (IJEnumerable<JToken> ter in tkn.Values())

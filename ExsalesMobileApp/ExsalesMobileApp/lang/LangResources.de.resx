@@ -145,6 +145,14 @@
     <value>Error</value>
     <comment>Ошибка</comment>
   </data>
+  <data name="FunctionsPageFunctionsNames" xml:space="preserve">
+    <value>Unternehmensleitung: Management eines Vertriebsnetzes: Management eines Einzelhandelsstandortes: Personalmanagement: Produkt- / Dienstleistungsmanagement: Bonuspunkt-Management: Vertrieb: Verkaufsüberwachung: Handelsstandortorganisation (regjobber)</value>
+    <comment>название функций</comment>
+  </data>
+  <data name="FunctionsPageTitleLabelText" xml:space="preserve">
+    <value>Die Funktionen, die Ihnen zur Verfügung stehen,</value>
+    <comment>Текст метки приветствия</comment>
+  </data>
   <data name="PageBack" xml:space="preserve">
     <value>Zurück</value>
     <comment>текст кнопки назад</comment>

@@ -1,4 +1,7 @@
-﻿using ExsalesMobileApp.lang;
+﻿#define DEBUG
+#undef RELEASE
+
+using ExsalesMobileApp.lang;
 using ExsalesMobileApp.services;
 using Newtonsoft.Json.Linq;
 using System;
@@ -28,15 +31,22 @@ namespace ExsalesMobileApp.pages
                 logo_image.Source = @"logo.jpg";
 
                 //блок локализации
-                en_login.Placeholder = /*LangResources.StartPageLoginPlaceholder;*/"Login";
-                en_password.Placeholder = /*LangResources.StartPageLoginPassword;*/"Password";
-                bt_sign_in.Text = /*LangResources.StartPageBtSignIn;*/"Sign In";
-                label_register.Text = /*LangResources.StartPageLabelRegister;*/"Create new account?";
-                bt_register.Text = /*LangResources.StartPageBtRegister;*/"Register";
-
+#if (DEBUG)
+                en_login.Placeholder = "Login";
+                en_password.Placeholder = "Password";
+                bt_sign_in.Text = "Sign In";
+                label_register.Text = "Create new account?";
+                bt_register.Text = "Register";
+#else
+                en_login.Placeholder = LangResources.StartPageLoginPlaceholder;
+                en_password.Placeholder = LangResources.StartPageLoginPassword;
+                bt_sign_in.Text = LangResources.StartPageBtSignIn;
+                label_register.Text = LangResources.StartPageLabelRegister;
+                bt_register.Text = LangResources.StartPageBtRegister;
+#endif
                 //тестирование
-                en_login.Text = "manager@test.com";
-                en_password.Text = "gIcDqiwYCq";
+                en_login.Text = "mng@gmail.com";
+                en_password.Text = "PfiMzeKR7o";
 
                 //приязка обработчиков событий
                 bt_register.Clicked += Bt_register_Clicked;
@@ -82,8 +92,12 @@ namespace ExsalesMobileApp.pages
                     }
                     else
                     {
-                        // await DisplayAlert("Warning", LangResources.StartPageEnterMessageWarning, "OK");
+#if (DEBUG)
                         await DisplayAlert("Warning", "Ошибка авторизации. Проверьте указанные данные!", "OK");
+
+#else
+                        await DisplayAlert("Warning", LangResources.StartPageEnterMessageWarning, "OK"); 
+#endif
                     }
                 }
                 else

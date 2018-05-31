@@ -1,4 +1,7 @@
-﻿using ExsalesMobileApp.lang;
+﻿#define DEBUG
+#undef RELEASE
+
+using ExsalesMobileApp.lang;
 using ExsalesMobileApp.library;
 using ExsalesMobileApp.services;
 using System;
@@ -37,6 +40,7 @@ namespace ExsalesMobileApp.pages
             en_phone.Text = user.Phone;
 
             /*Блок перевода*/
+#if(DEBUG)
             titleLabel.Text = "Your personal information";
             firstNameLabelText.Text = "First name";
             en_firstName.Placeholder = "Put your first name";
@@ -51,9 +55,9 @@ namespace ExsalesMobileApp.pages
             bt_edit.Text = "Edit";
             bt_save.Text = "Save";
             bt_back.Text = "Back";
+#else
 
-            /*
-               titleLabel.Text = LangResources.PersonPageTitleLabelText;
+            titleLabel.Text = LangResources.PersonPageTitleLabelText;
                firstNameLabelText.Text = LangResources.PersonPageFirstNameLabelText;
                en_firstName.Placeholder = LangResources.PersonPageFirstNamePlaceholder;
                lastNameLabelText.Text = LangResources.PersonPageLastNameLabelText;
@@ -67,7 +71,7 @@ namespace ExsalesMobileApp.pages
                bt_edit.Text = LangResources.PersonPageButtonEditText;
                bt_save.Text = LangResources.PersonPageButtonSaveText;
                bt_back.Text = LangResources.PageBack;                       
-               */
+#endif               
 
             //добавляем обработчики событий
             bt_back.Clicked += Bt_back_Clicked;
@@ -96,18 +100,19 @@ namespace ExsalesMobileApp.pages
         {
             try
             {
+#if (DEBUG)
                 if (String.IsNullOrEmpty(en_firstName.Text) || en_firstName.Text.Length == 0) throw new Exception("Проверьте указанное имя!");
                 if (String.IsNullOrEmpty(en_lastName.Text) || en_lastName.Text.Length == 0) throw new Exception("Проверьте указанную фамилию!");
                 if (String.IsNullOrEmpty(en_email.Text) || en_email.Text.Length == 0) throw new Exception("Проверьте email!");
                 if (String.IsNullOrEmpty(en_phone.Text) || en_phone.Text.Length == 0) throw new Exception("Проверьте телефон!");
                 if (sw_needPassword.IsToggled && (String.IsNullOrEmpty(en_password.Text) || en_password.Text.Length <8)) throw new Exception("Пароль должен содержать не менее 8 символов!");
-
-             /* if (String.IsNullOrEmpty(en_firstName.Text) || en_firstName.Text.Length == 0) throw new Exception(LangResources.PersonPageMessageBadFirstName);
-                if (String.IsNullOrEmpty(en_lastName.Text) || en_lastName.Text.Length == 0) throw new Exception(LangResources.PersonPageMessageBadLastName);
-                if (String.IsNullOrEmpty(en_email.Text) || en_email.Text.Length == 0) throw new Exception(LangResources.PersonPageMessageBadEmail);
-                if (String.IsNullOrEmpty(en_phone.Text) || en_phone.Text.Length == 0) throw new Exception(LangResources.PersonPageMessageBadPhone);
-                if (sw_needPassword.IsToggled && (String.IsNullOrEmpty(en_password.Text) || en_password.Text.Length < 8)) throw new Exception(LangResources.PersonPageMessageBadPassword);
-             */
+#else
+                 if (String.IsNullOrEmpty(en_firstName.Text) || en_firstName.Text.Length == 0) throw new Exception(LangResources.PersonPageMessageBadFirstName);
+                   if (String.IsNullOrEmpty(en_lastName.Text) || en_lastName.Text.Length == 0) throw new Exception(LangResources.PersonPageMessageBadLastName);
+                   if (String.IsNullOrEmpty(en_email.Text) || en_email.Text.Length == 0) throw new Exception(LangResources.PersonPageMessageBadEmail);
+                   if (String.IsNullOrEmpty(en_phone.Text) || en_phone.Text.Length == 0) throw new Exception(LangResources.PersonPageMessageBadPhone);
+                   if (sw_needPassword.IsToggled && (String.IsNullOrEmpty(en_password.Text) || en_password.Text.Length < 8)) throw new Exception(LangResources.PersonPageMessageBadPassword);
+#endif                
 
                 //собираем данные для запроса
                 Dictionary<string, string> data = new Dictionary<string, string>();
@@ -132,14 +137,19 @@ namespace ExsalesMobileApp.pages
                 var res = await api.Post(data);
                 if (res == HttpStatusCode.OK)
                 {
+#if(DEBUG)
                     await DisplayAlert("Success", "Данные пользователя обновлены", "OK");
-                   // await DisplayAlert(LangResources.Success, LangResources.PersonPageMessageUpdateData, "OK");
+#else
+                    await DisplayAlert(LangResources.Success, LangResources.PersonPageMessageUpdateData, "OK");
+#endif
                 }
                 else
                 {
+#if(DEBUG)
                     await DisplayAlert("Warning", "Ошибка обновления данных!Проверьте правильность указанных данных и попробуйте еще раз", "OK");
-                   // await DisplayAlert(LangResources.Warning, LangResources.PersonPageMessageNotUpdateData, "OK");
-
+#else
+                    await DisplayAlert(LangResources.Warning, LangResources.PersonPageMessageNotUpdateData, "OK");
+#endif
                 }
             }
             catch (Exception ex)

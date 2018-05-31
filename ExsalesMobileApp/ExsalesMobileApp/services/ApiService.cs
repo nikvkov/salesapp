@@ -74,6 +74,16 @@ namespace ExsalesMobileApp.services
 
         }
 
+        //данные о функции
+        public async Task<string> Function()
+        {
+            // var result = JsonConvert.DeserializeObject<AuthData>(await Get());
+            // return result;
+            //JObject o = JObject.Parse(await Get());
+            //return o;
+            return await Get();
+        }
+
 
         //добавляем параметры к запросу
         public void AddParams(Dictionary<string,string> data)

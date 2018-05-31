@@ -1,4 +1,7 @@
-﻿using ExsalesMobileApp.lang;
+﻿#define DEBUG
+#undef RELEASE
+
+using ExsalesMobileApp.lang;
 using ExsalesMobileApp.services;
 using System;
 using System.Collections.Generic;
@@ -24,20 +27,36 @@ namespace ExsalesMobileApp.pages
             logo_image.Source = @"logo.jpg";
 
             //блок локализации
-            role_pc.Title = "Role";                /*LangResources.RegPagePickerTitle;*/
+#if (DEBUG)
+            role_pc.Title = "Role";
 
-            string text = "Manager:Seller";        /*LangResources.RegPageRoles;*/
+            string text = "Manager:Seller";       
             string[] roles = text.Split(new char[] {':'});
             foreach (var item in roles)
             {
                 role_pc.Items.Add(item);
             }
 
-            lb_reg_text.Text = "The password will be sent to the specified email"; /* LangResources.RegPageLabelRegText;*/
-             en_email.Placeholder = "Email"; /*LangResources.RegPageEmailPlaceholder;*/
-            bt_send.Text = "Send";           /*LangResources.RegPageBtSend;*/
-            bt_back.Text = "Back";           /*LangResources.PageBack;*/
-            activ_ind.IsRunning = false;
+            lb_reg_text.Text = "The password will be sent to the specified email"; 
+             en_email.Placeholder = "Email";
+            bt_send.Text = "Send";         
+            bt_back.Text = "Back";   
+
+            role_pc.Title = "Role";
+#else
+            //перевод
+            string text = LangResources.RegPageRoles;
+            string[] roles = text.Split(new char[] { ':' });
+            foreach (var item in roles)
+            {
+                role_pc.Items.Add(item);
+            }
+
+            lb_reg_text.Text = LangResources.RegPageLabelRegText;
+            en_email.Placeholder = LangResources.RegPageEmailPlaceholder;
+            bt_send.Text = LangResources.RegPageBtSend;
+            bt_back.Text = LangResources.PageBack;
+#endif
 
             //добавление обработчиков событий
             bt_back.Clicked += Bt_back_Clicked;

@@ -145,6 +145,14 @@
     <value>Error</value>
     <comment>Ошибка</comment>
   </data>
+  <data name="FunctionsPageFunctionsNames" xml:space="preserve">
+    <value>Company management:Management of a distribution network:Management of a retail location:Personnel management:Product/service management:Bonus point management:Sales:Sales monitoring:Retail location organization (regjobber)</value>
+    <comment>название функций</comment>
+  </data>
+  <data name="FunctionsPageTitleLabelText" xml:space="preserve">
+    <value>The functions available to you,</value>
+    <comment>Текст метки приветствия</comment>
+  </data>
   <data name="PageBack" xml:space="preserve">
     <value>Back</value>
     <comment>текст кнопки назад</comment>
