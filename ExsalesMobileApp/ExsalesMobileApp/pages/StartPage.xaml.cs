@@ -29,6 +29,7 @@ namespace ExsalesMobileApp.pages
 
                 //инициализация элементов формы
                 logo_image.Source = @"logo.jpg";
+                ai_ind.IsVisible = false;
 
                 //блок локализации
 #if (DEBUG)
@@ -61,8 +62,12 @@ namespace ExsalesMobileApp.pages
         //обработка нажатия на кнопку входа
         private async void Bt_sign_in_Clicked(object sender, EventArgs e)
         {
+            
             try
             {
+                ai_ind.IsVisible = true;
+                bt_sign_in.IsVisible = false;
+                bt_register.IsVisible = false;
                 //задаем url отправки
                 ApiService api = new ApiService
                 {
@@ -111,6 +116,12 @@ namespace ExsalesMobileApp.pages
             catch (Exception ex)
             {
                 await DisplayAlert("Error", ex.Message, "OK");
+            }
+            finally
+            {
+                ai_ind.IsVisible = false;
+                bt_sign_in.IsVisible = true;
+                bt_register.IsVisible = true;
             }
         }
 

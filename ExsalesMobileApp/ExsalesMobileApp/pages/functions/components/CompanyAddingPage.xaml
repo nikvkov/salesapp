@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExsalesMobileApp.pages.functions.components.CompanyAdditionPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lb_title"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lb_nameText"/>
+                <Entry x:Name="en_name"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lb_typeText"/>
+                <Picker x:Name="pc_type"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lb_countryText"/>
+                <ActivityIndicator x:Name="ai_country" IsRunning="True"/>
+                <Entry x:Name="en_country"/>
+                <Button x:Name="bt_editCountry"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lb_cityText"/>
+                <ActivityIndicator x:Name="ai_city" IsRunning="True"/>
+                <Entry x:Name="en_city"/>
+                <Button x:Name="bt_editCity"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lb_addressText"/>
+                <Entry x:Name="en_adress"/>
+            </StackLayout>
+
+            <Button x:Name="bt_add"/>
+            <Button x:Name="bt_back"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

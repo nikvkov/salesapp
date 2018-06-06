@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ExsalesMobileApp.pages.functions;
+using ExsalesMobileApp.services;
 
 namespace ExsalesMobileApp.pages
 {
@@ -57,7 +58,8 @@ namespace ExsalesMobileApp.pages
             switch (id)
             {
                 case 1:
-                    await Navigation.PushModalAsync(new CompanyManagementPage(user,id ), true);
+                    var funcs = await GetFunctionData(id);
+                    await Navigation.PushModalAsync(new CompanyManagementPage(user, funcs ), true);
                     break;
                 default:
                     await Navigation.PopModalAsync();
@@ -69,6 +71,47 @@ namespace ExsalesMobileApp.pages
         private async void Bt_back_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+        async Task<List<FunctionData>> GetFunctionData(int functionId)
+        {
+            try
+            {
+                //задаем url отправки
+                ApiService api = new ApiService
+                {
+                    Url = "https://www.exsales.net/api/v1/user/functions"
+                };
+
+                //добавляем параметы к запросу
+                Dictionary<string, string> data = new Dictionary<string, string>();
+                //добавляем идентификатор пользователя
+                data.Add("auth_key", user.AuthKey);
+
+                //идентификатор функции
+                data.Add("func", functionId.ToString());
+                api.AddParams(data);
+
+                if (!String.IsNullOrEmpty(user.AuthKey) && functionId != 0)
+                {
+                    //отправляем запрос и ждем результат
+                    List<FunctionData> res = await api.Function();
+                    return res;
+                }
+                else
+                {
+                    await DisplayAlert("Warning", "Ошибка идентификаторов", "OK");
+                    return null;
+                }
+
+                //выводим ответ
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+                return null;
+            }
         }
     }//class
 }//namespace

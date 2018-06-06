@@ -2,6 +2,7 @@
 #undef RELEASE
 
 using ExsalesMobileApp.library;
+
 using ExsalesMobileApp.services;
 using System;
 using System.Collections.Generic;
@@ -11,67 +12,27 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ExsalesMobileApp.pages.functions.details;
 
 namespace ExsalesMobileApp.pages.functions
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CompanyManagementPage : ContentPage
-	{
+	public partial class CompanyManagementPage : MasterDetailPage
+    {
         Person user;
-        int functionId = 0;
-		public CompanyManagementPage (Person _user, int _id)
+        List<FunctionData> parts;
+		public CompanyManagementPage (Person _user, List<FunctionData> functionsPart)
 		{
 			InitializeComponent ();
             user = _user;
-            functionId = _id;
+            parts = functionsPart;
 
-            lb_title.Text = functionId.ToString();
-
-            var x = GetFunctionData();
-
-            DisplayAlert("", x.ToString(), "OK");
+            Master = new CompanyManagementPageMaster(user, parts, this);
+            Detail = new CompanyManagementPageDetail();
+            //lb_title.Text = parts.Count.ToString();
 
         }//c_tor
 
-        async Task<string> GetFunctionData()
-        {
-            try
-            {
-                //задаем url отправки
-                ApiService api = new ApiService
-                {
-                    Url = "https://www.exsales.net/api/v1/user/functions"
-                };
-
-                //добавляем параметы к запросу
-                Dictionary<string, string> data = new Dictionary<string, string>();
-                //добавляем идентификатор пользователя
-                data.Add("auth_key", user.AuthKey);
-
-                //идентификатор функции
-                data.Add("func", functionId.ToString() );
-                api.AddParams(data);
-
-                if (!String.IsNullOrEmpty(user.AuthKey) && functionId!=0)
-                {
-                    //отправляем запрос и ждем результат
-                    string res = await api.Function();
-                    return res;
-                }
-                else
-                {
-                    await DisplayAlert("Warning", "Ошибка идентификаторов", "OK");
-                    return null;
-                }
-
-                //выводим ответ
-
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", ex.Message, "OK");
-                return null;
-            }
-        }
+        
 	}
 }

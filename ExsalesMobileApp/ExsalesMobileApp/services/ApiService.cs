@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ExsalesMobileApp.library;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace ExsalesMobileApp.services
            
             var response = await client.PostAsync(Url, content);
             return response.StatusCode;
-        
+
         }
 
         //регистрация пользователя 
@@ -75,13 +76,37 @@ namespace ExsalesMobileApp.services
         }
 
         //данные о функции
-        public async Task<string> Function()
+        public async Task<List<FunctionData>> Function()
         {
-            // var result = JsonConvert.DeserializeObject<AuthData>(await Get());
-            // return result;
-            //JObject o = JObject.Parse(await Get());
-            //return o;
-            return await Get();
+            JObject o = JObject.Parse(await Get());
+            var result = JsonConvert.DeserializeObject<List<FunctionData>>(o["data"].ToString());
+            return result;
+
+        }
+
+        //получаем список стран
+        public async Task<List<CountryData>> GetCountries()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<List<CountryData>>(o["data"].ToString());
+        }
+
+        //получаем список городов
+        public async Task<List<CityData>> GetCities()
+        {
+            JObject o = JObject.Parse(await Get());
+           // if ((bool)o["status"])
+           // {
+                return JsonConvert.DeserializeObject<List<CityData>>(o["data"].ToString());
+           // }
+          //  else return null;
+        }
+
+        //получаем список типов компаний
+        public async Task<List<CompanyType>> GetCompanyTypes()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<List<CompanyType>>(o["data"].ToString());
         }
 
 
@@ -119,52 +144,37 @@ namespace ExsalesMobileApp.services
 
         }
 
-        //public class AuthData
-        //{
+        public class CountryData
+        {
+            [JsonProperty("id")]
+            public int Id { get; set; }
 
-        //    [JsonProperty("status")]
-        //    public bool Status { get; set; }
+            [JsonProperty("country")]
+            public string Country { get; set; }
+        }
 
-        //    [JsonProperty("role")]
-        //    public string Role { get; set; }
+        public class CityData
+        {
+            [JsonProperty("id")]
+            public int Id { get; set; }
 
+            [JsonProperty("city")]
+            public string City { get; set; }
+        }
 
-        //    [JsonProperty("auth_key")]
-        //    public string AuthKey { get; set; }
+        public class CompanyType
+        {
+            [JsonProperty("id")]
+            public int Id { get; set; }
 
-        //    [JsonProperty("firstName")]
-        //    public string FirstName { get; set; }
+            [JsonProperty("type")]
+            public string Type { get; set; }
 
-        //    [JsonProperty("lastName")]
-        //    public string LastName { get; set; }
-
-        //    [JsonProperty("email")]
-        //    public string Email { get; set; }
-
-        //    [JsonProperty("phone")]
-        //    public string Phone { get; set; }
-
-        //    [JsonProperty("company")]
-        //    public string Company { get; set; }
-
-        //    [JsonProperty("referal")]
-        //    public string Referal { get; set; }
-
-        //    [JsonProperty("functions")]
-        //    public string Functions { get; set; }
-
-
-        //    //public class AuthDetail
-        //    //{
-        //    //    [JsonProperty("role")]
-        //    //    public string Role { get; set; }
-
-        //    //    [JsonProperty("auth_key")]
-        //    //    public string AuthKey { get; set; }
-        //    //}
-
-        //}
-
+            public override string ToString()
+            {
+                return Type;
+            }
+        }
 
     }
 }

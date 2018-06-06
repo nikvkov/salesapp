@@ -135,6 +135,7 @@ namespace ExsalesMobileApp.pages
 
                 //отправляем запрос и ждем результат
                 var res = await api.Post(data);
+
                 if (res == HttpStatusCode.OK)
                 {
 #if(DEBUG)
