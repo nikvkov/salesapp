@@ -28,7 +28,7 @@ namespace ExsalesMobileApp.pages.functions
             parts = functionsPart;
 
             Master = new CompanyManagementPageMaster(user, parts, this);
-            Detail = new CompanyManagementPageDetail();
+            Detail = new CompanyManagementPageDetail(user);
             //lb_title.Text = parts.Count.ToString();
 
         }//c_tor

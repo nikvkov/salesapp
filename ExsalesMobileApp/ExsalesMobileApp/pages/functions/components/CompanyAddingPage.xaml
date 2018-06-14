@@ -33,6 +33,8 @@
             </StackLayout>
 
             <Button x:Name="bt_add"/>
+            <Button x:Name="bt_edit" IsVisible="False"/>
+            <Button x:Name="bt_del" IsVisible="False"/>
             <Button x:Name="bt_back"/>
         </StackLayout>
     </ContentPage.Content>

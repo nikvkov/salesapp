@@ -1,6 +1,7 @@
 ﻿using ExsalesMobileApp.interfaces;
 using ExsalesMobileApp.lang;
 using ExsalesMobileApp.pages;
+using ExsalesMobileApp.services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,15 @@ namespace ExsalesMobileApp
 {
 	public partial class App : Application
 	{
-		public App ()
+        //создаем объект класса с парметрами
+        internal static AppParameters APP;
+
+        public App ()
 		{
 			InitializeComponent();
+
+            //создаем объект класса с парметрами
+            APP = AppParameters.getInstance();
 
             //определение культуры устройства
             if (Device.OS != TargetPlatform.WinPhone)

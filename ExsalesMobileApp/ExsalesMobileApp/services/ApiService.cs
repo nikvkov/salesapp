@@ -1,8 +1,10 @@
 ﻿using ExsalesMobileApp.library;
+using ExsalesMobileApp.model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -14,6 +16,8 @@ namespace ExsalesMobileApp.services
     class ApiService
     {
         string url; //адрес запроса
+
+        public static string URL_GET_SUBDIVISION = "https://www.exsales.net/api/v1/subdivision/get";
 
         public string Url
         {
@@ -109,6 +113,33 @@ namespace ExsalesMobileApp.services
             return JsonConvert.DeserializeObject<List<CompanyType>>(o["data"].ToString());
         }
 
+        //получаем список кампаний
+        public async Task<ObservableCollection<CompanyData>> GetCompany()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<ObservableCollection<CompanyData>>(o["data"].ToString());
+        }
+
+        //получаем список пользователей для кампании
+        public async Task<ObservableCollection<SubdivisionUser>> GetSubdivisionUsers()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<ObservableCollection<SubdivisionUser>>(o["data"].ToString());
+        }
+
+        //получаем список подразделений для кампании
+        public async Task<ObservableCollection<Subdivision>> GetSubdivisions()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<ObservableCollection<Subdivision>>(o["data"].ToString());
+        }
+
+        //удаление кампании
+        public async Task<JObject> DelCompany()
+        {
+            JObject o = JObject.Parse(await Get());
+            return o;
+        }
 
         //добавляем параметры к запросу
         public void AddParams(Dictionary<string,string> data)
@@ -173,6 +204,52 @@ namespace ExsalesMobileApp.services
             public override string ToString()
             {
                 return Type;
+            }
+        }
+
+        public class SubdivisionUser
+        {
+            [JsonProperty("id")]
+            public int Id { get; set; }
+
+            [JsonProperty("firstname")]
+            public string Firstname { get; set; }
+
+            [JsonProperty("lastname")]
+            public string Lastname { get; set; }
+
+            public override string ToString()
+            { 
+                return Lastname + " " + Firstname;
+            }
+        }
+
+        public class CompanyData
+        {
+            [JsonProperty("id")]
+            public int Id { get; set; }
+
+            [JsonProperty("title")]
+            public string Title { get; set; }
+
+            [JsonProperty("type")]
+            public string Type { get; set; }
+
+            [JsonProperty("country")]
+            public string Country { get; set; }
+
+            [JsonProperty("city")]
+            public string City { get; set; }
+
+            [JsonProperty("address")]
+            public string Address { get; set; }
+
+            [JsonProperty("date")]
+            public string Date { get; set; }
+
+            public override string ToString()
+            {
+                return Title/*+" : "+ Type*/;
             }
         }
 

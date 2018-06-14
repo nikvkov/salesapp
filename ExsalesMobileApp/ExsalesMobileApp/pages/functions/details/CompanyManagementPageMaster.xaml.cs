@@ -49,10 +49,20 @@ namespace ExsalesMobileApp.pages.functions.details
                 case 10:
                     ApiService api = new ApiService { Url = "https://www.exsales.net/api/v1/company/types" };
                     var types = await api.GetCompanyTypes();
-                    parent.Detail = new CompanyAdditionPage(user, types);
+                    parent.Detail = new CompanyAdditionPage(user, types, null);
+                    break;
+                case 11:
+                    api = new ApiService { Url = "https://www.exsales.net/api/v1/company/types" };
+                    types = await api.GetCompanyTypes();
+                    parent.Detail = new CompanyAdditionPage(user, types, null);
+                    break;
+                case 12:
+                    api = new ApiService { Url = "https://www.exsales.net/api/v1/company/types" };
+                 
+                    parent.Detail = new SubdivisionsListPage(null);
                     break;
                 default:
-                    parent.Detail = new CompanyManagementPageDetail();
+                    parent.Detail = new CompanyManagementPageDetail(user);
                     break;
             }
 

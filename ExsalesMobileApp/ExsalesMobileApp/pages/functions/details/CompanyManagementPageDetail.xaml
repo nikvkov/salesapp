@@ -8,6 +8,14 @@
             <Label x:Name="lb_swipeInfo"/>
             <Label x:Name="lb_title"/>
             <Label x:Name="lb_description"/>
+
+            <ListView BackgroundColor="Aqua" HeightRequest="100" x:Name="lv_companies">
+                
+            </ListView>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="bt_addCompany"/>
+                <Button x:Name="bt_back"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

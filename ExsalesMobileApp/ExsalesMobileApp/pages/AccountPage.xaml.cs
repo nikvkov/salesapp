@@ -29,6 +29,8 @@ namespace ExsalesMobileApp.pages
 
             user = new Person(person);
 
+            App.APP.CurrentUser = user;
+
             //инициализация элементов формы
             logo_image.Source = @"logo.jpg";
 

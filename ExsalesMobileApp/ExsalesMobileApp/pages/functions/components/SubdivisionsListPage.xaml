@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExsalesMobileApp.pages.functions.components.SubdivisionsListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lb_title" />
+            <Picker x:Name="pc_company" />
+            <ActivityIndicator x:Name="ai_ind"/>
+            <ListView BackgroundColor="Cyan" x:Name="lv_subdivisions">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Title : " FontSize="Medium" />
+                                        <Label Text="{Binding Title}" FontSize="Large" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Manager : " FontSize="Small" />
+                                        <Label Text="{Binding User}" FontSize="Small" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Company : " FontSize="Small" />
+                                        <Label Text="{Binding Company}" FontSize="Small" />
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="bt_add"/>
+            <Button x:Name="bt_back"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
