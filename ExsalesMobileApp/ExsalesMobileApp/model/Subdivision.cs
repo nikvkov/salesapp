@@ -13,8 +13,10 @@ namespace ExsalesMobileApp.model
         [JsonProperty("title")]
         public string Title{ get; set; }
 
-
+        [JsonProperty("company")]
         public string Company{ get; set; }
+
+        [JsonProperty("user")]
         public string User{ get; set; }
     }//class
 

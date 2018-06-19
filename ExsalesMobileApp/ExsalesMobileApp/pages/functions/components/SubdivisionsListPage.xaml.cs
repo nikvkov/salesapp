@@ -43,20 +43,26 @@ namespace ExsalesMobileApp.pages.functions.components
         //добавление нового элемента
         private async void Bt_add_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new AddSubdivisionPage(currentCompany));
+            try
+            {
+                await Navigation.PushModalAsync(new AddSubdivisionPage(currentCompany, null));
+            }catch(Exception ex)
+            {
+                await DisplayAlert("Warning", ex.Message, "Done");
+            }
         }
 
         //изменение текущей компании
-        private void Pc_company_SelectedIndexChanged(object sender, EventArgs e)
+        private async void Pc_company_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentCompany = (CompanyData)pc_company.SelectedItem;
-            LoadCompanyData();
+            await LoadCompanyData();
         }
 
         //клик по элементу
-        private void Lv_subdivisions_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void Lv_subdivisions_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            
+            await Navigation.PushModalAsync(new AddSubdivisionPage(currentCompany, (Subdivision)e.SelectedItem));
         }
 
         private async void Bt_back_Clicked(object sender, EventArgs e)
@@ -67,13 +73,13 @@ namespace ExsalesMobileApp.pages.functions.components
         protected async override void OnAppearing()
         {
 
-            LoadCompanyData();
+            await LoadCompanyData();
 
             base.OnAppearing();
         }//OnAppearing
 
         //подгрузка подразделений для компании
-        async void LoadCompanyData()
+        async Task LoadCompanyData()
         {
             ai_ind.IsVisible = true;
             ai_ind.IsRunning = true;

@@ -4,9 +4,23 @@
              x:Class="ExsalesMobileApp.pages.functions.components.AddSubdivisionPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="lb_title"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lb_item_title"/>
+                <Entry x:Name="en_item_title"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                <Label x:Name="lb_item_company"/>
+                <Picker x:Name="pc_company"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                <Label x:Name="lb_item_user"/>
+                <Picker x:Name="pc_user"/>
+            </StackLayout>
+            <Button x:Name="bt_add"/>
+            <Button x:Name="bt_edit"/>
+            <Button x:Name="bt_delete"/>
+            <Button x:Name="bt_back"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

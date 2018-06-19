@@ -18,6 +18,11 @@ namespace ExsalesMobileApp.services
         string url; //адрес запроса
 
         public static string URL_GET_SUBDIVISION = "https://www.exsales.net/api/v1/subdivision/get";
+        public static string URL_ADD_SUBDIVISION = "https://www.exsales.net/api/v1/subdivision/add";
+        public static string URL_EDIT_SUBDIVISION = "https://www.exsales.net/api/v1/subdivision/edit";
+        public static string URL_REMOVE_SUBDIVISION = "https://www.exsales.net/api/v1/subdivision/remove";
+        public static string URL_COMPANY_AT_TYPE = "https://www.exsales.net/api/v1/company/by-type";
+        public static string URL_USERS_AT_COMPANY = "https://www.exsales.net/api/v1/user/all-in-company";
 
         public string Url
         {
@@ -136,6 +141,13 @@ namespace ExsalesMobileApp.services
 
         //удаление кампании
         public async Task<JObject> DelCompany()
+        {
+            JObject o = JObject.Parse(await Get());
+            return o;
+        }
+
+        //отправка get запроса
+        public async Task<JObject> GetRequest()
         {
             JObject o = JObject.Parse(await Get());
             return o;
