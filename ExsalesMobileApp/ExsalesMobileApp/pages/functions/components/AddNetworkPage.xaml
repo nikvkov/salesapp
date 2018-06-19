@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="ExsalesMobileApp.pages.functions.components.AddNetworkPage">
     <ContentPage.Content>
         <StackLayout>
@@ -13,6 +14,16 @@
                 <Label x:Name="lb_item_network"/>
                 <Picker x:Name="pc_item_network"/>
             </StackLayout>
+            <StackLayout>
+                <Label x:Name="lb_item_retail"/>
+                <Entry x:Name="en_item_retail"/>
+            </StackLayout>
+            <StackLayout x:Name="cb_container"></StackLayout>
+
+            <Button x:Name="bt_add"/>
+            <Button x:Name="bt_edit"/>
+            <Button x:Name="bt_delete"/>
+            <Button x:Name="bt_back"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

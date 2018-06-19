@@ -23,6 +23,8 @@ namespace ExsalesMobileApp.services
         public static string URL_REMOVE_SUBDIVISION = "https://www.exsales.net/api/v1/subdivision/remove";
         public static string URL_COMPANY_AT_TYPE = "https://www.exsales.net/api/v1/company/by-type";
         public static string URL_USERS_AT_COMPANY = "https://www.exsales.net/api/v1/user/all-in-company";
+        public static string URL_GET_RETAIL = "https://www.exsales.net/api/v1/company/retails";
+    
 
         public string Url
         {
@@ -151,6 +153,20 @@ namespace ExsalesMobileApp.services
         {
             JObject o = JObject.Parse(await Get());
             return o;
+        }
+
+        //получаем список торговых сетей
+        public async Task<List<Network>> GetNetworks()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<List<Network>>(o["data"].ToString());
+        }
+
+        //получаем список торговых точек
+        public async Task<List<RetailPoint>> GetRetailPoints()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<List<RetailPoint>>(o["data"].ToString());
         }
 
         //добавляем параметры к запросу
