@@ -1,4 +1,6 @@
-﻿using ExsalesMobileApp.pages.functions.components;
+﻿using ExsalesMobileApp.model;
+using ExsalesMobileApp.pages.functions.components;
+using ExsalesMobileApp.services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace ExsalesMobileApp.pages.functions.details
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NetworkPageDetail : ContentPage
 	{
+        List<RetailPoint> points;
 		public NetworkPageDetail ()
 		{
 			InitializeComponent ();
@@ -29,11 +32,42 @@ namespace ExsalesMobileApp.pages.functions.details
         //нажатие на кнопку добавить
         private async void Bt_add_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new AddNetworkPage(), true);
+            await Navigation.PushModalAsync(new AddNetworkPage(null), true);
         }
 
         //нажатие на кнопку назад
         private async void Bt_back_Clicked(object sender, EventArgs e)=> await Navigation.PopModalAsync(true);
+
+        protected async override void OnAppearing()
+        {
+            try
+            {
+
+                ApiService api = new ApiService { Url = ApiService.URL_RETAIL_AT_USER };
+                Dictionary<string, string> data = new Dictionary<string, string>
+                {
+                    {"auth_key",App.APP.CurrentUser.AuthKey }
+                };
+                api.AddParams(data);
+
+                var res = await api.GetRetailPoints();
+
+                lv_container.ItemsSource = res;
+                lv_container.ItemSelected += Lv_container_ItemSelected;
+
+            }catch(Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Done");
+            }
+
+            base.OnAppearing();
+        }//OnAppearing
+
+        //нажатие на строку list view
+        private async void Lv_container_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            await Navigation.PushModalAsync(new AddNetworkPage((RetailPoint)e.SelectedItem), true);
+        }
 
     }//class
 }//namespace

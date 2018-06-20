@@ -17,6 +17,9 @@ namespace ExsalesMobileApp.model
         [JsonProperty("address")]
         public string Address { get; set; }
 
+        [JsonProperty("distributor")]
+        public int DistributorId { get; set; }
+
         public override string ToString()
         {
             return Title;

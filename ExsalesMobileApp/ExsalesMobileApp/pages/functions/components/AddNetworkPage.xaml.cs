@@ -16,10 +16,15 @@ namespace ExsalesMobileApp.pages.functions.components
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddNetworkPage : ContentPage
 	{
-		public AddNetworkPage ()
+        List<RetailPoint> retailPoints;
+        List<Network> networks;
+        RetailPoint currentPoint;
+        internal AddNetworkPage (RetailPoint _point)
 		{
             
 			InitializeComponent ();
+
+            currentPoint = _point;
 
             lb_title.Text = "Add new network";
             lb_item_title.Text = "New title";
@@ -37,17 +42,74 @@ namespace ExsalesMobileApp.pages.functions.components
             en_item_title.Focused+= Pc_item_network_Focused;
             bt_back.Clicked += Bt_back_Clicked;
             bt_add.Clicked += Bt_add_Clicked;
+            bt_delete.Clicked += Bt_delete_Clicked;
+
+            bt_edit.IsVisible = false;
 
         }//c_tor
+
+
+        //удаление 
+        private async void Bt_delete_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (currentPoint != null)
+                {
+                    ApiService api = new ApiService { Url = ApiService.URL_REMOVE_RETAIL };
+                    Dictionary<string, string> data = new Dictionary<string, string>
+                    {
+                        {"auth_key", App.APP.CurrentUser.AuthKey },
+                        {"id", currentPoint.Id.ToString() }
+                    };
+                    api.AddParams(data);
+                    var res = await api.GetRequest();
+                    if ((bool)res["status"])
+                    {
+                        await DisplayAlert("Success", "Network was removed", "OK");
+                        await Navigation.PopModalAsync(true);
+                    }
+                    else
+                    {
+                        await DisplayAlert("Warning", "Network was not removed", "Done");
+                        await Navigation.PopModalAsync(true);
+                    }
+                }
+
+            }catch(Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Done");
+            }
+        }
 
         //добавление
         private async void Bt_add_Clicked(object sender, EventArgs e)
         {
             try
             {
-                ApiService api = new ApiService { Url = "" };
+                ApiService api = new ApiService { Url = ApiService.URL_ADD_RETAIL };
+                Dictionary<string, string> data = new Dictionary<string, string>();
+                data.Add("auth_key", App.APP.CurrentUser.AuthKey);
+                if (en_item_title.Text == null || en_item_title.Text.Length == 0) throw new Exception("Title must be fill!");
+                data.Add("title", en_item_title.Text);
+                if(retailPoints==null || retailPoints.Count==0) throw new Exception("Retails not found!");
 
-            }catch(Exception ex)
+                RetailPoint point = retailPoints.Where(x => (x.Title == en_item_retail.Text.Split('\n')[0])).FirstOrDefault();
+                if(point==null) throw new Exception("Retail point not found!");
+                data.Add("retailer_id", point.Id.ToString());
+                var res = await api.Post(data);
+                if(res == System.Net.HttpStatusCode.OK)
+                {
+                    await DisplayAlert("Succees", "Network was added", "OK");
+                    await Navigation.PopModalAsync(true);
+                }
+                else
+                {
+                    await DisplayAlert("Warning", "Network was not added", "Done");
+                }
+            }
+            catch(Exception ex)
             {
                 await DisplayAlert("Error", ex.Message, "Done");
             }
@@ -71,8 +133,8 @@ namespace ExsalesMobileApp.pages.functions.components
             Dictionary<string,string> data = new Dictionary<string, string>();
             data.Add("id", ((Network)pc_item_network.SelectedItem).Id.ToString());
             api.AddParams(data);
-            var retailPoints = await api.GetRetailPoints();
-            string[] names = retailPoints.Select(x => ("Title : " + x.Title + "\n" + "Address : " + x.Address)).ToArray();
+            retailPoints = await api.GetRetailPoints();
+            string[] names = retailPoints.Select(x => (x.Title + "\n" + "Address : " + x.Address)).ToArray();
             var item = await DisplayActionSheet("Select retail point", "Cancel", null, names);
 
             if (item != "Cancel")
@@ -97,13 +159,25 @@ namespace ExsalesMobileApp.pages.functions.components
                 Dictionary<string, string> data = new Dictionary<string, string>();
                 data.Add("id","2");
                 api.AddParams(data);
-                var networks = await api.GetNetworks();
+                networks = await api.GetNetworks();
                 pc_item_network.ItemsSource = networks;
                 pc_item_network.SelectedIndex = 0;
 
             }catch(Exception ex)
             {
                 await DisplayAlert("Error", ex.Message, "Done");
+            }
+
+            if (currentPoint != null)
+            {
+                bt_add.IsVisible = false;
+                en_item_title.Text = currentPoint.Title;
+                if (networks != null)
+                    pc_item_network.SelectedItem = networks.Where(x => x.Id == currentPoint.DistributorId).First();
+            }
+            else
+            {
+                bt_delete.IsVisible = false;
             }
 
 

@@ -23,8 +23,11 @@ namespace ExsalesMobileApp.services
         public static string URL_REMOVE_SUBDIVISION = "https://www.exsales.net/api/v1/subdivision/remove";
         public static string URL_COMPANY_AT_TYPE = "https://www.exsales.net/api/v1/company/by-type";
         public static string URL_USERS_AT_COMPANY = "https://www.exsales.net/api/v1/user/all-in-company";
+        public static string URL_RETAIL_AT_USER = "https://www.exsales.net/api/v1/user/retails";
         public static string URL_GET_RETAIL = "https://www.exsales.net/api/v1/company/retails";
-    
+        public static string URL_ADD_RETAIL = "https://www.exsales.net/api/v1/user/link-retail";
+        public static string URL_REMOVE_RETAIL = "https://www.exsales.net/api/v1/user/remove-retailer";
+
 
         public string Url
         {
