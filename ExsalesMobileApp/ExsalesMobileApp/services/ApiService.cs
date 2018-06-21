@@ -27,6 +27,10 @@ namespace ExsalesMobileApp.services
         public static string URL_GET_RETAIL = "https://www.exsales.net/api/v1/company/retails";
         public static string URL_ADD_RETAIL = "https://www.exsales.net/api/v1/user/link-retail";
         public static string URL_REMOVE_RETAIL = "https://www.exsales.net/api/v1/user/remove-retailer";
+        public static string URL_ADD_BRANCH = "https://www.exsales.net/api/v1/rackjobber/link-retail-and-company";
+        public static string URL_EDIT_BRANCH = "https://www.exsales.net/api/v1/rackjobber/edit-link";
+        public static string URL_REMOVE_BRANCH = "https://www.exsales.net/api/v1/rackjobber/remove-link";
+        public static string URL_GET_BRANCH = "https://www.exsales.net/api/v1/rackjobber/all-links";
 
 
         public string Url
@@ -170,6 +174,13 @@ namespace ExsalesMobileApp.services
         {
             JObject o = JObject.Parse(await Get());
             return JsonConvert.DeserializeObject<List<RetailPoint>>(o["data"].ToString());
+        }
+
+        //получение списка веток
+        public async Task<List<Branch>> GetBranches()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<List<Branch>>(o["data"].ToString());
         }
 
         //добавляем параметры к запросу

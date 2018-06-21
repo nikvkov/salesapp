@@ -1,4 +1,5 @@
-﻿using ExsalesMobileApp.services;
+﻿using ExsalesMobileApp.model;
+using ExsalesMobileApp.services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,7 +18,7 @@ namespace ExsalesMobileApp.pages.functions.components
 	{
         List<CompanyData> companyData;
 
-        public AddBranchPage (Object _branch)
+        internal AddBranchPage (Branch _branch)
 		{
 			InitializeComponent ();
 
@@ -32,8 +33,42 @@ namespace ExsalesMobileApp.pages.functions.components
             bt_back.Text = "Back";
 
             bt_back.Clicked += Bt_back_Clicked;
+            bt_add.Clicked += Bt_add_Clicked;
 
         }//c_tor
+
+        //добавление 
+        private async void Bt_add_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (en_item_title.Text.Length != 0 && pc_company.SelectedItem!=null && pc_network.SelectedItem!=null)
+                {
+                    ApiService api = new ApiService { Url = ApiService.URL_ADD_BRANCH };
+                    Dictionary<string, string> data = new Dictionary<string, string>
+                    {
+                        {"auth_key", App.APP.CurrentUser.AuthKey },
+                        {"title", en_item_title.Text },
+                        {"company_id", ((CompanyData)pc_company.SelectedItem).Id.ToString() },
+                        {"retailer_id", ((RetailPoint)pc_network.SelectedItem).Id.ToString() }
+                    };
+
+                    var res = await api.Post(data);
+                    if (res == System.Net.HttpStatusCode.OK)
+                    {
+                        await DisplayAlert("Success", "Branch was added", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Warning", "Branch was not added", "Done");
+                    }
+                }
+
+            }catch(Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Done");
+            }
+        }//Bt_add_Clicked
 
         protected async override void OnAppearing()
         {
@@ -76,7 +111,7 @@ namespace ExsalesMobileApp.pages.functions.components
 
 
             base.OnAppearing();
-        }//c_tor
+        }//OnAppearing
 
         //нажатие на кнопку назад
         private async void Bt_back_Clicked(object sender, EventArgs e) => await Navigation.PopModalAsync(true);
