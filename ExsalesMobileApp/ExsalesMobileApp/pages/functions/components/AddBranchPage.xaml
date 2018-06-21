@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExsalesMobileApp.pages.functions.components.AddBranchPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lb_title" />
+            <Label x:Name="lb_item_title"/>
+            <Entry x:Name="en_item_title"/>
+            <Label x:Name="lb_item_company"/>
+            <Picker x:Name="pc_company"/>
+            <Label x:Name="lb_item_network"/>
+            <Picker x:Name="pc_network"/>
+            <Button x:Name="bt_add"/>
+            <Button x:Name="bt_edit"/>
+            <Button x:Name="bt_delete"/>
+            <Button x:Name="bt_back"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

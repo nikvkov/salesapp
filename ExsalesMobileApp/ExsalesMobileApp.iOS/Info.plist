@@ -57,5 +57,8 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>ExsalesMobileApp</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <key>NSMicrophoneUsageDescription</key>
+    <key>NSCameraUsageDescription</key>
 </dict>
 </plist>
