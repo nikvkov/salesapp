@@ -4,9 +4,22 @@
              x:Class="ExsalesMobileApp.pages.functions.components.NotificationListPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="bt_add"/>
+            <ListView x:Name="lv_container">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout >
+                                    <Label Text="{Binding Header}" FontSize="22" />
+                                    <Label Text="{Binding Date , StringFormat='Date : {0:D}'}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="bt_back"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

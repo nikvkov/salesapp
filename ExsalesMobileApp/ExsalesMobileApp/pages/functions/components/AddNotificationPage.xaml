@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cx="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             x:Class="ExsalesMobileApp.pages.functions.components.AddNotificationPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lb_title" />
+            <Label x:Name="lb_item_header"/>
+            <Entry x:Name="en_item_header"/>
+            <Label x:Name="lb_item_content"/>
+            <Editor x:Name="ed_item_content"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="bt_add_photo"/>
+                <Button x:Name="bt_make_photo"/>
+                <Image x:Name="curImage"/>
+            </StackLayout>
+
+            <!--<StackLayout x:Name="sl_container" Orientation="Horizontal" BackgroundColor="AliceBlue">
+                
+            </StackLayout>-->
+
+            <!--<ListView x:Name="lv_images" >
+                --><!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                 <Image Source="{Binding UriImageSource}"/>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>--><!--
+            </ListView>-->
+            
+            <cx:CarouselView  x:Name="lv_images">
+                <cx:CarouselView.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Button Text="View" Clicked="bt_viewClick"/>
+                                <Button Text="X" Clicked="bt_deleteClick"/>
+                            </StackLayout>
+                            <Image  Aspect="AspectFill" Source="{Binding UriImage}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </cx:CarouselView.ItemTemplate>
+            </cx:CarouselView>
+
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="bt_add"/>
+                <Button x:Name="bt_edit"/>
+                <Button x:Name="bt_delete"/>
+            </StackLayout>
+            <Button x:Name="bt_back"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

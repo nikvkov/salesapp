@@ -31,7 +31,13 @@ namespace ExsalesMobileApp.services
         public static string URL_EDIT_BRANCH = "https://www.exsales.net/api/v1/rackjobber/edit-link";
         public static string URL_REMOVE_BRANCH = "https://www.exsales.net/api/v1/rackjobber/remove-link";
         public static string URL_GET_BRANCH = "https://www.exsales.net/api/v1/rackjobber/all-links";
-
+        public static string URL_ADD_NOTIFICATION = "https://www.exsales.net/api/v1/rackjobber/add-notice";
+        public static string URL_GET_NOTIFICATION = "https://www.exsales.net/api/v1/rackjobber/all-notices";
+        public static string URL_GET_CURRENT_NOTIFICATION = "https://www.exsales.net/api/v1/rackjobber/get-notice";
+        public static string URL_EDIT_NOTIFICATION = "https://www.exsales.net/api/v1/rackjobber/edit-notice";
+        public static string URL_REMOVE_NOTIFICATION = "https://www.exsales.net/api/v1/rackjobber/remove-notice";
+        public static string URL_ADD_MEDIA = "https://www.exsales.net/api/v1/rackjobber/add-media";
+        public static string URL_REMOVE_MEDIA = "https://www.exsales.net/api/v1/rackjobber/remove-media";
 
         public string Url
         {
@@ -100,6 +106,12 @@ namespace ExsalesMobileApp.services
             var result = JsonConvert.DeserializeObject<List<FunctionData>>(o["data"].ToString());
             return result;
 
+        }
+
+        //получить данные позаметке
+        public static CustomNotification GetCurrentNotification(JObject obj)
+        {
+            return JsonConvert.DeserializeObject<CustomNotification>(obj["data"].ToString());
         }
 
         //получаем список стран
@@ -181,6 +193,13 @@ namespace ExsalesMobileApp.services
         {
             JObject o = JObject.Parse(await Get());
             return JsonConvert.DeserializeObject<List<Branch>>(o["data"].ToString());
+        }
+
+        //получение списка записей
+        public async Task<List<CustomNotification>> GetNotifications()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<List<CustomNotification>>(o["data"].ToString());
         }
 
         //добавляем параметры к запросу
