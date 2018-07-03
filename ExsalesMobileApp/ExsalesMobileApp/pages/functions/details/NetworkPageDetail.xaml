@@ -6,6 +6,7 @@
         <StackLayout>
             <Label x:Name="lb_title" />
             <Button x:Name="bt_add"/>
+            <ActivityIndicator x:Name="ai_ind" IsRunning="True" IsVisible="True"/>
             <ListView BackgroundColor="LawnGreen" x:Name="lv_container">
                 
             </ListView>

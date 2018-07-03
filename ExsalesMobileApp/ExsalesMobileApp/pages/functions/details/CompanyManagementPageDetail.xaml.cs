@@ -65,7 +65,10 @@ namespace ExsalesMobileApp.pages.functions.details
 
         protected async override void OnAppearing()
         {
-            
+            ai_ind.IsVisible = true;
+            ai_ind.IsRunning = true;
+            lv_companies.IsVisible = false;
+
             try
             {
                 ApiService api = new ApiService { Url = "https://www.exsales.net/api/v1/company/get" };
@@ -101,7 +104,8 @@ namespace ExsalesMobileApp.pages.functions.details
                 Binding cityBinding = new Binding { Path = "City", StringFormat = "City: {0}" };
                 customCell.SetBinding(CompanyListViewCell.CityProperty, cityBinding);
 
-                customCell.SetBinding(CompanyListViewCell.DateProperty, "Date");
+                Binding dateBinding = new Binding { Path = "Date", StringFormat = "Date: {0:D}" };
+                customCell.SetBinding(CompanyListViewCell.DateProperty, dateBinding);
 
 
                 customCell.SetBinding(CompanyListViewCell.CurrentCompanyProperty, "Id");
@@ -116,6 +120,12 @@ namespace ExsalesMobileApp.pages.functions.details
             {
                 await DisplayAlert("Warning", ex.Message, "OK");
             
+            }
+            finally
+            {
+                ai_ind.IsVisible = false;
+                ai_ind.IsRunning = false;
+                lv_companies.IsVisible = true;
             }
         }
 

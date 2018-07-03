@@ -97,6 +97,17 @@ namespace ExsalesMobileApp.library
             //    }
             //}
         }
+
+
+        public static List<Person> GetUsers(List<JObject> res)
+        {
+            List<Person> data = new List<Person>();
+            foreach (var item in res)
+            {
+                data.Add(new Person(item));
+            }
+            return data;
+        }
     }
 
     public enum PersonRole

@@ -86,10 +86,11 @@ namespace ExsalesMobileApp.pages
                 data.Add("email", ApiService.StringUrlEncode(en_email.Text));
 
                 //добавляем роль
-                data.Add("role",role_pc.SelectedIndex.ToString());
+                // data.Add("role",role_pc.SelectedIndex.ToString());
+                data.Add("role", "0");
                 api.AddParams(data);
 
-                if (!String.IsNullOrEmpty(en_email.Text) && role_pc.SelectedIndex !=-1)
+                if (!String.IsNullOrEmpty(en_email.Text) /*&& role_pc.SelectedIndex !=-1*/)
                 {
                     //отправляем запрос и ждем результат
                     string res = await api.Registration();

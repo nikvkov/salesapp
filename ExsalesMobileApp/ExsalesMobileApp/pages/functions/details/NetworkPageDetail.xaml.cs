@@ -40,6 +40,9 @@ namespace ExsalesMobileApp.pages.functions.details
 
         protected async override void OnAppearing()
         {
+            ai_ind.IsVisible = true;
+            ai_ind.IsRunning = true;
+            lv_container.IsVisible = false;
             try
             {
 
@@ -58,6 +61,12 @@ namespace ExsalesMobileApp.pages.functions.details
             }catch(Exception ex)
             {
                 await DisplayAlert("Error", ex.Message, "Done");
+            }
+            finally
+            {
+                ai_ind.IsVisible = false;
+                ai_ind.IsRunning = false;
+                lv_container.IsVisible = true;
             }
 
             base.OnAppearing();

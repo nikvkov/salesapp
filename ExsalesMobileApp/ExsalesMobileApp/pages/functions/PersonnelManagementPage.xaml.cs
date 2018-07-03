@@ -1,4 +1,5 @@
 ﻿using ExsalesMobileApp.library;
+using ExsalesMobileApp.pages.functions.details;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,18 @@ using Xamarin.Forms.Xaml;
 namespace ExsalesMobileApp.pages.functions
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PersonnelManagementPage : ContentPage
+	public partial class PersonnelManagementPage : MasterDetailPage
 	{
-		public PersonnelManagementPage (List<FunctionData> data)
+        List<FunctionData> parts;
+        public PersonnelManagementPage (List<FunctionData> data)
 		{
 			InitializeComponent ();
-		}
+
+            parts = data;
+
+            Master = new PersonnelManagementPageMaster(parts, this);
+            Detail = new PersonnelManagementPageDetail();
+
+        }
 	}//class
 }//namespace

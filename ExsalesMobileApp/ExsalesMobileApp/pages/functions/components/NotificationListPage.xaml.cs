@@ -40,6 +40,9 @@ namespace ExsalesMobileApp.pages.functions.components
 
         protected async override void OnAppearing()
         {
+            ai_ind.IsRunning = true;
+            ai_ind.IsVisible = true;
+            lv_container.IsVisible = false;
             try
             {
                 ApiService api = new ApiService {Url = ApiService.URL_GET_NOTIFICATION };
@@ -53,6 +56,12 @@ namespace ExsalesMobileApp.pages.functions.components
             }catch(Exception ex)
             {
                 customNotes = new List<CustomNotification>();
+            }
+            finally
+            {
+                ai_ind.IsRunning = false;
+                ai_ind.IsVisible = false;
+                lv_container.IsVisible = true;
             }
 
             lv_container.ItemsSource = customNotes;

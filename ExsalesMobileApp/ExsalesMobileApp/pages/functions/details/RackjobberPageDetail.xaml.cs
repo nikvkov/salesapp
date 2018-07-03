@@ -53,6 +53,9 @@ namespace ExsalesMobileApp.pages.functions.details
         //подгрузка данных
         protected async override void OnAppearing()
         {
+            ai_ind.IsRunning = true;
+            ai_ind.IsVisible = true;
+            lv_container.IsVisible = false;
             try
             {
                 ApiService api = new ApiService {Url = ApiService.URL_GET_BRANCH };
@@ -67,6 +70,12 @@ namespace ExsalesMobileApp.pages.functions.details
             }catch(Exception ex)
             {
                 branchesList = new List<Branch>();
+            }
+            finally
+            {
+                ai_ind.IsRunning = false;
+                ai_ind.IsVisible = false;
+                lv_container.IsVisible = true;
             }
 
             lv_container.ItemsSource = branchesList;

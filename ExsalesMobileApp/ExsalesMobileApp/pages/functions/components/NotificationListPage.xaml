@@ -5,6 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Button x:Name="bt_add"/>
+            <ActivityIndicator x:Name="ai_ind" IsRunning="True" IsVisible="True"/>
             <ListView x:Name="lv_container">
                 <ListView.ItemTemplate>
                     <DataTemplate>

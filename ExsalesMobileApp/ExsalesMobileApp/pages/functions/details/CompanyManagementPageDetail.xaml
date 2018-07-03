@@ -9,6 +9,7 @@
             <Label x:Name="lb_title"/>
             <Label x:Name="lb_description"/>
 
+            <ActivityIndicator x:Name="ai_ind" IsRunning="True" IsVisible="False"/>
             <ListView BackgroundColor="Aqua" HeightRequest="100" x:Name="lv_companies">
                 
             </ListView>

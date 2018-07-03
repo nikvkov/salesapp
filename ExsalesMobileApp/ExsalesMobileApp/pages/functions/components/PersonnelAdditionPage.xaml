@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="ExsalesMobileApp.pages.functions.components.PersonnelAdditionPage">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout x:Name="item_container">
+
+            <Label x:Name="lb_email"/>
+            <Entry x:Name="en_email" Keyboard="Email"/>
+            <Label x:Name="lb_functions"/>
+            <controls:CheckBox x:Name="chb_companyManagement" Checked="True"/>
+            <controls:CheckBox x:Name="chb_networkManagement" Checked="True"/>
+            <controls:CheckBox x:Name="chb_retailManagement" Checked="True"/>
+            <controls:CheckBox x:Name="chb_personnelManagement" Checked="True"/>
+            <controls:CheckBox x:Name="chb_productManagement" Checked="True"/>
+            <controls:CheckBox x:Name="chb_bonusManagement" Checked="True"/>
+            <controls:CheckBox x:Name="chb_salesManagement" Checked="True"/>
+            <controls:CheckBox x:Name="chb_salesMonitoring" Checked="True"/>
+            <controls:CheckBox x:Name="chb_rack_jobberManagement" Checked="True"/>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="bt_add"/>
+                <Button x:Name="bt_edit"/>
+                <Button x:Name="bt_del"/>
+            </StackLayout>
+            <Button x:Name="bt_back"/>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

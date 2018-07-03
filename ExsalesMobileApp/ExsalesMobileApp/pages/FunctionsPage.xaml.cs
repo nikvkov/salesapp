@@ -65,6 +65,10 @@ namespace ExsalesMobileApp.pages
                     funcs = await GetFunctionData(id);
                     await Navigation.PushModalAsync(new NetworkManagementPage(funcs), true);
                     break;
+                case 4:
+                    funcs = await GetFunctionData(id);
+                    await Navigation.PushModalAsync(new PersonnelManagementPage(funcs), true);
+                    break;
                 case 9:
                     await Navigation.PushModalAsync(new RackjobberManagementPage(), true);
                     break;

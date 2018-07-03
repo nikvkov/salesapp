@@ -23,6 +23,8 @@ namespace ExsalesMobileApp.services
         public static string URL_REMOVE_SUBDIVISION = "https://www.exsales.net/api/v1/subdivision/remove";
         public static string URL_COMPANY_AT_TYPE = "https://www.exsales.net/api/v1/company/by-type";
         public static string URL_USERS_AT_COMPANY = "https://www.exsales.net/api/v1/user/all-in-company";
+        public static string URL_ADD_USER = "https://www.exsales.net/api/v1/user/add";
+        public static string URL_GET_USERS = "https://www.exsales.net/api/v1/user/child-users";
         public static string URL_RETAIL_AT_USER = "https://www.exsales.net/api/v1/user/retails";
         public static string URL_GET_RETAIL = "https://www.exsales.net/api/v1/company/retails";
         public static string URL_ADD_RETAIL = "https://www.exsales.net/api/v1/user/link-retail";
@@ -174,6 +176,13 @@ namespace ExsalesMobileApp.services
             return o;
         }
 
+        //получение списка пользователей
+        public async Task<List<User>> GetUsers()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<List<User>>(o["data"].ToString()); ;
+        }
+
         //получаем список торговых сетей
         public async Task<List<Network>> GetNetworks()
         {
@@ -306,7 +315,7 @@ namespace ExsalesMobileApp.services
             public string Address { get; set; }
 
             [JsonProperty("date")]
-            public string Date { get; set; }
+            public DateTime Date { get; set; }
 
             public override string ToString()
             {
