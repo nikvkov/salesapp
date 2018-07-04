@@ -1,4 +1,5 @@
 ﻿using ExsalesMobileApp.library;
+using ExsalesMobileApp.model;
 using ExsalesMobileApp.pages.functions.components;
 using ExsalesMobileApp.services;
 using ExsalesMobileApp.view;
@@ -26,8 +27,9 @@ namespace ExsalesMobileApp.pages.functions.details
 
             bt_back.Clicked += async (x, y) => { await Navigation.PopModalAsync(true); };
             bt_addPerson.Clicked += async (x, y) => { await Navigation.PushModalAsync(new PersonnelAdditionPage(null)); };
+            lv_container.ItemSelected += async (x, y) => { await Navigation.PushModalAsync(new PersonnelAdditionPage((User)y.SelectedItem)); };
 
-		}//c_tor
+        }//c_tor
 
         protected async override void OnAppearing()
         {
@@ -45,12 +47,8 @@ namespace ExsalesMobileApp.pages.functions.details
 
                 api.AddParams(data);
 
-                JObject o = await api.GetRequest();
-
-               // await DisplayAlert("Success", o["data"].ToString(), "OK");
-
                 var res = await api.GetUsers();
-              //  var users = Person.GetUsers(res);
+    
                 lv_container.ItemsSource = res;
                 lv_container.HasUnevenRows = true;
                 lv_container.ItemTemplate = new DataTemplate(() =>

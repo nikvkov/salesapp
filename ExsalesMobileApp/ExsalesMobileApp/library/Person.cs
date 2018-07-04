@@ -124,5 +124,10 @@ namespace ExsalesMobileApp.library
 
         [JsonProperty("function")]
         public string Functions { get; set; }
+
+        public override string ToString()
+        {
+            return Id+" "+Functions;
+        }
     }
 }

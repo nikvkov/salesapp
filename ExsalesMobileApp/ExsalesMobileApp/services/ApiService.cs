@@ -25,6 +25,8 @@ namespace ExsalesMobileApp.services
         public static string URL_USERS_AT_COMPANY = "https://www.exsales.net/api/v1/user/all-in-company";
         public static string URL_ADD_USER = "https://www.exsales.net/api/v1/user/add";
         public static string URL_GET_USERS = "https://www.exsales.net/api/v1/user/child-users";
+        public static string URL_REMOVE_USER = "https://www.exsales.net/api/v1/user/remove-child-user";
+        public static string URL_UPDATE_USER = "https://www.exsales.net/api/v1/user/set-functions";
         public static string URL_RETAIL_AT_USER = "https://www.exsales.net/api/v1/user/retails";
         public static string URL_GET_RETAIL = "https://www.exsales.net/api/v1/company/retails";
         public static string URL_ADD_RETAIL = "https://www.exsales.net/api/v1/user/link-retail";
@@ -40,6 +42,7 @@ namespace ExsalesMobileApp.services
         public static string URL_REMOVE_NOTIFICATION = "https://www.exsales.net/api/v1/rackjobber/remove-notice";
         public static string URL_ADD_MEDIA = "https://www.exsales.net/api/v1/rackjobber/add-media";
         public static string URL_REMOVE_MEDIA = "https://www.exsales.net/api/v1/rackjobber/remove-media";
+        public static string URL_USER_FUNCTIONS = "https://www.exsales.net/api/v1/user/functions";
 
         public string Url
         {
@@ -182,7 +185,7 @@ namespace ExsalesMobileApp.services
             JObject o = JObject.Parse(await Get());
             return JsonConvert.DeserializeObject<List<User>>(o["data"].ToString()); ;
         }
-
+        
         //получаем список торговых сетей
         public async Task<List<Network>> GetNetworks()
         {
