@@ -23,6 +23,7 @@ namespace ExsalesMobileApp.services
         public static string URL_REMOVE_SUBDIVISION = "https://www.exsales.net/api/v1/subdivision/remove";
         public static string URL_COMPANY_AT_TYPE = "https://www.exsales.net/api/v1/company/by-type";
         public static string URL_USERS_AT_COMPANY = "https://www.exsales.net/api/v1/user/all-in-company";
+        public static string URL_GET_COMPANIES = "https://www.exsales.net/api/v1/user/all-companies";
         public static string URL_ADD_USER = "https://www.exsales.net/api/v1/user/add";
         public static string URL_GET_USERS = "https://www.exsales.net/api/v1/user/child-users";
         public static string URL_REMOVE_USER = "https://www.exsales.net/api/v1/user/remove-child-user";
@@ -43,6 +44,11 @@ namespace ExsalesMobileApp.services
         public static string URL_ADD_MEDIA = "https://www.exsales.net/api/v1/rackjobber/add-media";
         public static string URL_REMOVE_MEDIA = "https://www.exsales.net/api/v1/rackjobber/remove-media";
         public static string URL_USER_FUNCTIONS = "https://www.exsales.net/api/v1/user/functions";
+        public static string URL_SET_USER_FUNCTIONS = "https://www.exsales.net/api/v1/user/set-functions";
+        public static string URL_SAVE_PRODUCT = "https://www.exsales.net/api/v1/product/add";
+        public static string URL_GET_PRODUCTS = "https://www.exsales.net/api/v1/product/all";
+        public static string URL_EDIT_PRODUCT = "https://www.exsales.net/api/v1/product/edit";
+        public static string URL_REMOVE_PRODUCT = "https://www.exsales.net/api/v1/product/remove";
 
         public string Url
         {
@@ -149,6 +155,13 @@ namespace ExsalesMobileApp.services
         {
             JObject o = JObject.Parse(await Get());
             return JsonConvert.DeserializeObject<ObservableCollection<CompanyData>>(o["data"].ToString());
+        }
+
+        //получаем список товаров
+        public async Task<List<Product>> GetProducts()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<List<Product>>(o["data"].ToString());
         }
 
         //получаем список пользователей для кампании

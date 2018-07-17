@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExsalesMobileApp.pages.functions.components.ProductPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="productStack">
+                <Label Text="Title" />
+                <Entry x:Name="en_title" Text="{Binding Title}" FontSize="Medium" />
+                <Label Text="EAN" />
+                <Entry x:Name="en_ean" Text="{Binding EAN}" FontSize="Medium" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Save" x:Name="bt_save" />
+                <Button Text="Edit" x:Name="bt_edit" />
+                <Button Text="X" x:Name="bt_del" />
+                <Button Text="Назад" x:Name="bt_back" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

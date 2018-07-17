@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="ExsalesMobileApp.pages.functions.components.AdditionFunctionCompanyPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lb_company" />
+            <Picker x:Name="pc_company"/>
+            <Label x:Name="lb_functions"/>
+            <controls:CheckBox x:Name="chb_companyManagement" />
+            <controls:CheckBox x:Name="chb_networkManagement" />
+            <controls:CheckBox x:Name="chb_retailManagement" />
+            <controls:CheckBox x:Name="chb_personnelManagement" />
+            <controls:CheckBox x:Name="chb_productManagement" />
+            <controls:CheckBox x:Name="chb_bonusManagement"  />
+            <controls:CheckBox x:Name="chb_salesManagement" />
+            <controls:CheckBox x:Name="chb_salesMonitoring" />
+            <controls:CheckBox x:Name="chb_rack_jobberManagement" />
+            <Button x:Name="bt_save"/>
+            <Button x:Name="bt_back"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

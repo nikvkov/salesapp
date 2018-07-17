@@ -81,8 +81,10 @@ namespace ExsalesMobileApp.pages.functions.components
                     {
                         SaveToAlbum = true,
                         Directory = "Exsales",
-                        Name = $"{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.jpg"
+                        Name = $"{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.jpg",
                         //Name = string.Format("{0}", DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss"))
+
+                        PhotoSize = PhotoSize.Small
                     });
 
                     if (file == null)
