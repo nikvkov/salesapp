@@ -49,6 +49,7 @@ namespace ExsalesMobileApp.services
         public static string URL_GET_PRODUCTS = "https://www.exsales.net/api/v1/product/all";
         public static string URL_EDIT_PRODUCT = "https://www.exsales.net/api/v1/product/edit";
         public static string URL_REMOVE_PRODUCT = "https://www.exsales.net/api/v1/product/remove";
+        public static string URL_ADD_SALE = "https://www.exsales.net/api/v1/sale/add";
 
         public string Url
         {

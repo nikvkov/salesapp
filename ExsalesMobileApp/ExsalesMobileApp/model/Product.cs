@@ -19,5 +19,9 @@ namespace ExsalesMobileApp.model
         [JsonProperty("ean")]
         public string EAN { get; set; }
 
+  
+        [JsonProperty("bonus")]
+        public int Bonus { get; set; }
+
     }
 }
