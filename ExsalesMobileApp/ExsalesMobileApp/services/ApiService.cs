@@ -50,6 +50,8 @@ namespace ExsalesMobileApp.services
         public static string URL_EDIT_PRODUCT = "https://www.exsales.net/api/v1/product/edit";
         public static string URL_REMOVE_PRODUCT = "https://www.exsales.net/api/v1/product/remove";
         public static string URL_ADD_SALE = "https://www.exsales.net/api/v1/sale/add";
+        public static string URL_REMOVE_SALE = "https://www.exsales.net/api/v1/sale/remove";
+        public static string URL_ALL_USER_SALES = "https://www.exsales.net/api/v1/sale/all";
 
         public string Url
         {
@@ -212,6 +214,13 @@ namespace ExsalesMobileApp.services
         {
             JObject o = JObject.Parse(await Get());
             return JsonConvert.DeserializeObject<List<RetailPoint>>(o["data"].ToString());
+        }
+
+        //получаем список собственных продаж
+        public async Task<List<Sale>> GetOwnSales()
+        {
+            JObject o = JObject.Parse(await Get());
+            return JsonConvert.DeserializeObject<List<Sale>>(o["data"].ToString());
         }
 
         //получение списка веток

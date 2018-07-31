@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExsalesMobileApp.pages.functions.components.OwnerSalesMonitoring">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lb_sales"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lb_all_bonus"/>
+                <Label x:Name="lb_quant_bonus"/>
+            </StackLayout>
+            <ActivityIndicator x:Name="ai_ind"/>
+            <ListView x:Name="lv_sales_container">
+                HasUnevenRows="True"
+                
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Product}" FontSize="18" />
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Quantity, StringFormat='Quantity : {0}'}" />
+                                        <Label Text="{Binding Bonus, StringFormat='Bonus : {0}'}" />
+                                       
+                                    </StackLayout>
+                                    <Label Text="{Binding Accepted, StringFormat='Accepted : {0}'}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="bt_new_sale"/>
+            <Button x:Name="bt_back"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
